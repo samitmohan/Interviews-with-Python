@@ -10,8 +10,8 @@
     - Pull
         - This command pulls new changes from the currently working branch located in the remote central repository.
     - Push
-        - This command is also used for a similar purpose but it follows a two step process: 
-            1. Pulls all commits and changes from desired branch and stores them in a new branch of the local repository. 
+        - This command is also used for a similar purpose but it follows a two step process:
+            1. Pulls all commits and changes from desired branch and stores them in a new branch of the local repository.
             current
             2. For changes to be reflected in the current / target branch, git fetch should be followed by git merge command.
 

@@ -1,30 +1,18 @@
-Read CS Related book every night before sleep / in school (CLRS/etc)
-Overview -> Monthly -> Weekly -> Daily
-Resources : Notion
-
 Phase 1 : Language
    1. Python
-       Python book (Narsimha) / Learn Python + Playlist (except multi-threading/dev) :: implement (notes) + EPI + Python Tricks
+      Python book (Narsimha) + EPI + Python Tricks
    2. OOPs
-       Love Babbar Course + OOD Neetcode & Python OOPs (playlist vids/books) + Design Patterns (Creational) read and implement in py
+       OOD Neetcode & Python OOPs (playlist vids/books) + Design Patterns (Creational) read and implement in py
 
 Phase 2 : DSA
    1. Learn DP & Graph (Notion notes)
-   2. NC150 + Striver + Arsh (make notes on paper & revise) [if time : interviewbit roadmap]
+   2. NC150 + Striver + (make notes on paper & revise) [interviewbit roadmap]
 
 Phase 3 : Theory
    1. LLD + HLD GKCS Course / Videos
    2. OS / DBMS / Networks
 
 Phase 4 : Misc
-   1. Projects / Courses : contexual MAB / DS udemy course + python for backend
-   2. LC Contests (give all after starting DSA)
-   3. React Course (learn)
-
-May = Phase 1 + 2 (half)
-June = Phase 2 complete
-July/August = Phase 3 + Internship.
-September : Phase 4 + Revise Phase 1/2/3
-
-
-Interviews start from October 2023.
+   1. Projects / Courses
+   2. LC Contests 
+   3. ML : see samitmohan.co/todo

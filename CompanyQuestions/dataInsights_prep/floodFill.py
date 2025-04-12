@@ -1,6 +1,5 @@
 from typing import List, Tuple
  
- 
 def flood_fill(screen: List[List[int]], sr: int, sc: int, row: int, col: int, source: int, color: int) -> None:
     # Condition for checking out of bounds
     if sr < 0 or sr >= row or sc < 0 or sc >= col:

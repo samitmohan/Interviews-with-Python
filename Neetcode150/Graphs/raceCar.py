@@ -12,7 +12,8 @@ class Solution:
 
         while q:
             moves, pos, speed = q.popleft()
-            if pos == target: return moves
+            if pos == target:
+                return moves
 
             if (pos, speed) in visited:
                 continue
@@ -25,6 +26,8 @@ class Solution:
                 # cases:
                 # 1) overshot our target,
                 # 2) speed negative (target = 6, and we're at 4 then we need to go reverse IF speed is neg)
-                if (pos + speed > target and speed > 0) or (pos + speed < target and speed < 0):
+                if (pos + speed > target and speed > 0) or (
+                    pos + speed < target and speed < 0
+                ):
                     speed = -1 if speed > 0 else 1
                     q.append((moves + 1, pos, speed))

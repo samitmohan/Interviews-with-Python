@@ -32,7 +32,7 @@ def maxProduct(nums):
     max_product = min_product = ans = nums[0]  # handles 0s
 
     for i in range(1, len(nums)):
-        if n == 0:
+        if nums[i] == 0:
             max_product, min_product = 1, 1  # 0s are ignored
             continue
         if nums[i] < 0:
