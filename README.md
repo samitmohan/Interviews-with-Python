@@ -3,7 +3,7 @@
 - Python Language Specific Questions
 
 - DSA in Python (implementation + questions)
-    - Striver + NC150 + 6Days30Companies + Riddhi Dutta Patterns
+    - Striver + NC150
 
     - OOPs and Design Patterns (Creational) + LLD
 
@@ -11,9 +11,7 @@
 
     - SQL / DBMS
 
-    - Random DSA problems (LC daily etc)
-
 
     [Plan](https://github.com/samitmohan/Master-Interviews-with-Python/blob/master/Plan.txt)
     |
-    [Resources](https://github.com/samitmohan/Master-Interviews-with-Python/blob/master/master_interviews.md)
+    [Resources](https://samitmohan.super.site/todo)
