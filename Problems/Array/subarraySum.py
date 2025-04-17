@@ -6,16 +6,21 @@
 # O(n)
 # repetition allowed
 
+
 class Solution:
     def subarraySum(nums, k):
         ans = 0
         curr_sum = 0
-        prefix_sum = {0: 1}  # empty subarray by default (key = sum, value = number of times sum present)
+        prefix_sum = {
+            0: 1
+        }  # empty subarray by default (key = sum, value = number of times sum present)
         for n in nums:
             curr_sum += n
             diff = curr_sum - k
             ans += prefix_sum.get(diff, 0)
-            prefix_sum[curr_sum] = 1 + prefix_sum.get(curr_sum, 0)  # update hashmap (sum : count)
+            prefix_sum[curr_sum] = 1 + prefix_sum.get(
+                curr_sum, 0
+            )  # update hashmap (sum : count)
         return ans
 
 
