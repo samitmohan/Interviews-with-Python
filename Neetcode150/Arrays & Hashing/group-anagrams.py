@@ -3,19 +3,17 @@
 # Input: strs = ["eat","tea","tan","ate","nat","bat"]
 # Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 
+from collections import defaultdict
+
+
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        # approach -> count of the letters will be same.
-        # tan / nat -> 1 a, 1 t, 1 n. Hashmap -> key [pattern], value [which strings have this pattern]
-        # 1 e, 1 a, 1 t -> eat
-        # m -> total number of input strings, n -> average length of a string, we're using count (len -> 26)
-        # O(m * n)
-
-        res = defaultdict(list)  # mapping charCount to list of anagrams
+    def groupAnagrams(self, strs):
+        ans = defaultdict(list)
         for s in strs:
-            count = [0] * 26  # a...z
-            for character in s:
-                count[ord(character) - ord("a")] += 1  # for every char
-            res[tuple(count)].append(s)  # group all anagrams (list are not keys -> so changed to tuple)
+            sorted_s = "".join(sorted(s))  # actostpostp
+            ans[sorted_s].append(s)
+        return list(ans.values())
 
-        return res.values()
+
+s = Solution()
+print(s.groupAnagrams(["act", "stop", "post", "hat"]))
