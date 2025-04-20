@@ -1,24 +1,38 @@
-# https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/
-'''
-LCA : where split is ocurring
-in the first example : split occurs at 6 since 2 < 6 and 8 > 6
-in the next example : both 2 and 4 are in left ST : new common ancestor : 2 not 6
-  2 <=2 and 4 > 2 :: hence 2 is where the split takes place : lCA
-  and if any of p, q val = node.val : obviously that is the ancestor
-  (example : 6 is the ancestor for p = 6 and q = 7)
+# https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-Time : Height : O(log(n))
-'''
+
+"""
+if left_depth == right_depth:
+    they are the same depth, return the curr node
+if left_depth < right_depth:
+
+
+if left: return left
+if right: return right
+return None
+
+Time: O(N) — visits each node once
+"""
 
 
 class Solution:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        curr = root
-        while True:  # going to repeat until we find answer
-            if p.val > curr.val and q.val > curr.val:  # go right
-                curr = curr.right
-            elif p.val < curr.val and q.val < curr.val:
-                curr = curr.left
-            else:  # split occurs : answer found (curr)
-                return curr
-        # no need to return anything since while True will run forever until answer found
+    def lowestCommonAncestor(self, root, p, q):
+        def dfs(root):
+            if not root:
+                return None
+            if root == p or root == q:
+                return root
+            left = dfs(root.left)
+            right = dfs(root.right)
+            if left and right:
+                # current node is LCA
+                return root
+            return left or right
+
+        return dfs(root)
