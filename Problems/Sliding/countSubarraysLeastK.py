@@ -17,4 +17,3 @@ class Solution:
                     count -= 1
                 left += 1
         return ans
-ts 
