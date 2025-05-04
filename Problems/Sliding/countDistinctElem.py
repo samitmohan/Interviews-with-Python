@@ -38,6 +38,20 @@ def countDistinct(nums, k):
         ans.append(distinct)
 
     return ans
+
+# Better Method
+def countDistinct(nums, k):
+    n = len(nums)  
+    ans = []
+  
+    # Iterate over every window
+    for i in range(n - k + 1):
+        seen = set()
+        for j in range(i, i + k):
+            seen.add(nums[j])
+        ans.append(len(seen))
+    return ans
+
     
 def main():
     print(countDistinct(nums = [1, 2, 1, 3, 4, 2, 3], k = 4))
