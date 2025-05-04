@@ -11,3 +11,24 @@ class Solution:
 
         # the trick is that the last letter is always added bcs it has nothing to compare to in front of it.
         return ans + mp[s[-1]]
+
+
+def intToRoman(num):
+    # convert this int to string
+    # 58 = LVIII L = 50, V= 5, III = 3
+    ans = ''
+    roman = [
+    (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
+    (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
+    (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
+            ]
+    for val, symbol in roman:
+        while num >= val:
+            ans += symbol
+            num -= val
+    return ans
+
+def main():
+    print(intToRoman(58))
+main()
+
