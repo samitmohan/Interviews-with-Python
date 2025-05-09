@@ -197,22 +197,35 @@ def main():
     #Bombay [                             ]
     #Bihar  [                             ]
     #Bangalore [                          ]
+
     graph = [
-            [0, 1162, 908, 1744], 
-            [1153, 0, 840, 845], 
-            [894, 1445, 0, 1568], 
-            [1744, 845, 1630, 0] 
-            ]
-
-
-    cities = [
-        (0, 0),  # Delhi
-        (1162, 0),  # Bombay
-        (894, 800),  # Bihar
-        (1744, 500)  # Bangalore
+    #             D     B     Bi    Ba    C     K     H     J     L
+        [  0,   1162,  908,  1744,  2210, 1300, 1420,  280,  500],  # Delhi
+        [1162,    0,   840,   845,  1030, 1960,  710, 1150, 1100],  # Bombay
+        [ 908,  840,     0,  1568,  1820,  480, 1120,  780,  420],  # Bihar
+        [1744, 845,  1568,     0,   350,  1600,  500, 1600, 1300],  # Bangalore
+        [2210,1030, 1820,   350,     0,  1670,  630, 1850, 1400],  # Chennai
+        [1300,1960,  480,  1600,  1670,    0, 1220,  950,  800],   # Kolkata
+        [1420, 710, 1120,   500,   630,  1220,   0, 1350,  920],   # Hyderabad
+        [ 280,1150,  780,  1600,  1850,  950, 1350,    0,  400],   # Jaipur
+        [ 500,1100,  420,  1300,  1400,  800,  920,  400,    0],   # Lucknow
     ]
-    city_labels = ["Delhi", "Bombay", "Bihar", "Bangalore"]
 
+    city_labels = [
+        "Delhi", "Bombay", "Bihar", "Bangalore",
+        "Chennai", "Kolkata", "Hyderabad", "Jaipur", "Lucknow"
+    ]
+    cities = [
+        (0, 0),       # Delhi
+        (1162, 0),    # Bombay
+        (894, 800),   # Bihar
+        (1744, 500),  # Bangalore
+        (1600, -400), # Chennai
+        (1700, 1100), # Kolkata
+        (1350, 200),  # Hyderabad
+        (300, 100),   # Jaipur
+        (700, 400),   # Lucknow
+    ]
     # True = Custom Perm (19 microsec) | False = Itertools (10 microsec)
     use_custom_perm = True
 
