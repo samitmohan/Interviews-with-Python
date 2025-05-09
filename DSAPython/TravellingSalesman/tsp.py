@@ -27,6 +27,11 @@ Algorithm             | Approach                 | Complexity         |
 
 The time complexity is determined by the total number of permutations. 
 Since the number of permutations is (n-1)! * n, the time complexity of the brute force method to solve the TSP is O((n-1)! * n) which can be simplified to O(n!).
+
+Cities	Use Brute Force?	Use Held-Karp (DP)?
+≤ 8	    ✅ Yes	           ✅ Optional
+9–16	❌ No	           ✅ Yes
+> 20	❌ No	           ⚠ Too slow (use heuristics like Genetic/ACO)
 '''
 
 
@@ -34,7 +39,7 @@ import matplotlib.pyplot as plt
 import random
 import time
 
-def visualise(cities, path):
+def visualise(cities, path, city_labels):
     x, y = [cities[i][0] for i in path], [cities[i][1] for i in path]
     plt.figure(figsize=(8, 6))
     for i, (x_coord, y_coord) in enumerate(cities):
@@ -83,7 +88,109 @@ def generate_permutations(arr):
             perms.append([curr] + p)
     return perms
 
+
+
+
+# DP Solution
+'''
+we build optimal paths from smaller subsets using memoization.
+for n cities we have 2^n possible subsets
+each subset can be represented using bitmask
+
+Subset(Cities Visited)  | Bitmask	| Decimal
+{}	                    |   0000	|    0
+{0}	                    |   0001    |    1
+{0, 1}	                |   0011	|    3
+{0, 2, 3}	            |  1101	    |   13
+{0, 1, 2, 3}	        |  1111	    |   15
+
+Each bit is 1 if city is visited 0 else
+
+Min cost to reach city i having visited cities in mask (subsets) and ending at i
+mask = 0 to 2^n-1 {all subsets}
+i = 0 to n-1 {last visited city}
+
+Time complexity -> O(n × 2**n)
+
+start at city 0
+
+dp[mask][i] means min cost to reach city i after travelling to mask cities (mask includes city i and 0 and we end at city i)
+
+left shift << multiplying number by 2
+start at city 0 -> go directly to some city i ≠ 0
+
+https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm
+
+function algorithm TSP (G, n) is
+    for k := 2 to n do ~~~ FROM k = 2 to len of matrix
+        g({k}, k) := d(1, k) ~~~~ find ways to travel from 1 to k
+    end for
+
+    for s := 2 to n−1 do ~~~ for all subsets
+        for all S ⊆ {2, ..., n}, |S| = s do 
+            for all k ∈ S do
+                g(S, k) := minm≠k,m∈S [g(S\{k}, m) + d(m, k)] ~~~ find the min path out of all subsets of g(S, k)
+            end for
+        end for
+    end for
+
+    opt := mink≠1 [g({2, 3, ..., n}, k) + d(k, 1)]
+    return (opt)
+end function
+
+'''
+
+def tsp_DP(graph, city_labels, cities):
+    '''Dynamic Programming + Bitmasking approach to solve TSP in O(n^2 * 2^n)'''
+    n = len(graph)
+    ALL_VISITED = (1 << n) - 1
+    dp = [[float('inf')] * n for _ in range(1 << n)]
+    parent = [[-1] * n for _ in range(1 << n)]
+
+    dp[1][0] = 0  # Start at city 0 with only city 0 visited
+
+    for mask in range(1 << n):
+        for u in range(n):
+            if not (mask & (1 << u)): continue
+            for v in range(n):
+                if (mask & (1 << v)) == 0:
+                    new_mask = mask | (1 << v)
+                    new_cost = dp[mask][u] + graph[u][v]
+                    if new_cost < dp[new_mask][v]:
+                        dp[new_mask][v] = new_cost
+                        parent[new_mask][v] = u
+
+    # minimum cost to return to starting city (0)
+    min_cost = float('inf')
+    last_city = -1
+    for i in range(1, n):
+        cost = dp[ALL_VISITED][i] + graph[i][0]
+        if cost < min_cost:
+            min_cost = cost
+            last_city = i
+
+    path = []
+    mask = ALL_VISITED
+    curr = last_city
+    while curr != -1:
+        path.append(curr)
+        next_curr = parent[mask][curr]
+        mask = mask ^ (1 << curr)
+        curr = next_curr
+    path.append(0)
+    path.reverse()
+
+    best_path_labels = [city_labels[i] for i in path]
+    # visualise(cities, path)
+    return min_cost, best_path_labels
+
+
+
+# Nearest Neighbor Algorithm
+
+
 def main():
+    # BF
     # graph[i][j] is the distance from city i to city j
             # Delhi Bombay Bihar Bangalore
     #Delhi  [                             ]
@@ -107,9 +214,10 @@ def main():
     city_labels = ["Delhi", "Bombay", "Bihar", "Bangalore"]
 
     # True = Custom Perm (19 microsec) | False = Itertools (10 microsec)
-    use_custom_perm = False
+    use_custom_perm = True
 
     method = "Custom Permutations" if use_custom_perm else "itertools.permutations"
+    print(f"\n Brute Force Method ({method})")
     print(f"Using: {method}")
     start_time = time.perf_counter()
     min_cost, best_path = tsp_BF(graph, city_labels, cities, use_custom_perm=use_custom_perm)
@@ -120,7 +228,19 @@ def main():
     print(f"Minimum distance from start vertex to visit all cities and come back: {min_cost}")
     print(f"Best path: {best_path}")
 
+
+    # ---------- Dynamic Programming ----------
+    print(f"\n Dynamic Programming (Held-Karp)")
+    start_time = time.perf_counter()
+    min_cost_dp, best_path_dp = tsp_DP(graph, city_labels, cities)
+    end_time = time.perf_counter()
+    execution_time_dp = (end_time - start_time) * 1000000
+    print(f"Execution Time: {execution_time_dp:.4f} µs")
+    print(f"Minimum distance: {min_cost_dp}")
+    print(f"Best path: {best_path_dp}")
+    # visualise(cities, [city_labels.index(name) for name in best_path_dp], city_labels)
+
+
 main()
 
-
-# DP Solution
+# https://medium.com/basecs/speeding-up-the-traveling-salesman-using-dynamic-programming-b76d7552e8dd
