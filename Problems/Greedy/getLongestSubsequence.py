@@ -47,11 +47,33 @@ class Solution:
                 ans.append(words[i])
                 last_grp = groups[i]
         return ans
+    
+    #  OR return [x for i,x in enumerate(words) if not i or groups[i] != groups[i-1]
+
+    def getLongestSubsequenceDP(self, words, groups):
+        n = len(words)
+        dp = [1] * n
+        prev = [-1] * n
+
+        for i in range(n):
+            for j in range(i):
+                if groups[i] != groups[j]:
+                    if dp[j] + 1 > dp[i]: # new len
+                        dp[i] = dp[j] + 1
+                        prev[i] = j # for reconstruction
+
+        # Reconstruct path
+        max_len = max(dp)
+        idx = dp.index(max_len)
+        path = []
+
+        while idx != -1:
+            path.append(words[idx])
+            idx = prev[idx]
+
+        return path[::-1] # reverse
 
 s = Solution()
 print(s.getLongestSubsequence(words = ["e","a","b"], groups = [0,0,1])) # eb
 print(s.getLongestSubsequence(words = ["a","b","c","d"], groups = [1,0,1,1])) # abc
 print(s.getLongestSubsequence(words = ["d"], groups = [1])) #d 
-
-# one liner
-# return [x for i,x in enumerate(words) if not i or groups[i] != groups[i-1]
