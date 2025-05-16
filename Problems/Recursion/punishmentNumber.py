@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/find-the-punishment-number-of-an-integer/
 
+
 '''
 10 
 range = [1,10]
@@ -53,4 +54,3 @@ class Solution:
 
 s = Solution()
 print(s.punishmentNumber(10))
-print(s.punishmentNumber(37))
