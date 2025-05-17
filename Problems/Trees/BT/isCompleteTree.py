@@ -14,14 +14,14 @@ from collections import deque
 
 
 class Solution:
-    def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
+    def isCompleteTree(self, root) -> bool:
         nullNodeFound = False
-        if root == None:
+        if root is None:
             return True  # empty tree : always a complete BT
         q = deque([root])
         while q:
             node = q.popleft()
-            if node == None:
+            if node is None:
                 nullNodeFound = True
             else:
                 # current node isn't null -> check if we've already found a nulll node : if yes -> can't be possible
