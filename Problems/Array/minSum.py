@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/minimum-equal-sum-of-two-arrays-after-replacing-zeros/submissions/1629843895/?envType=daily-question&envId=2025-05-10
-'''
+"""
 sum can only be incremented if number of zeroes are present.
 as long as it has one zero its sum can be greater than curr sum
 
@@ -9,7 +9,7 @@ iterate over both arrays
 count number of zeroes
 for every number of zero in particular nums -> incremenet sum of that particular nums
 check if sum1 == sum2
-The minimum possible sum of each array can be computed by assuming each zero is replaced with 1. 
+The minimum possible sum of each array can be computed by assuming each zero is replaced with 1.
 
 # both nums should have the same minimum possible sum
 
@@ -22,7 +22,8 @@ You Only Need to Adjust the Smaller Sum
     The maximum increase you can get is zeroes * (X - 1) if you replace 0s with value X instead of 1.
 
 Edge case: If either array has no zeroes -> sum are not equal
-'''
+"""
+
 
 class Solution:
     def minSum(self, nums1: List[int], nums2: List[int]) -> int:
@@ -40,7 +41,7 @@ class Solution:
                 sum2 += 1
                 zero2 += 1
             # sum2 add zero2
-            
+
         if (zero1 == 0 and sum2 > sum1) or (zero2 == 0 and sum1 > sum2):
-            return -1 # no ans
+            return -1  # no ans
         return max(sum1, sum2)

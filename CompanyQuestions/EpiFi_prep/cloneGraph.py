@@ -34,7 +34,7 @@ Time : O(n) where n = E + V
 
 
 class Solution:
-    def cloneGraph(self, node: 'Node') -> 'Node':
+    def cloneGraph(self, node: "Node") -> "Node":
         old_to_new = {}
 
         def dfs(node):

@@ -1,6 +1,6 @@
 """
 _sift_up() and _sift_down() methods are used to maintain the heap property after adding or removing an element.
-siftDown swaps a node that is too small with its largest child (thereby moving it down) until it is at least as large as both nodes below it. 
+siftDown swaps a node that is too small with its largest child (thereby moving it down) until it is at least as large as both nodes below it.
 siftUp swaps a node that is too large with its parent (thereby moving it up) until it is no larger than the node above it.
 """
 

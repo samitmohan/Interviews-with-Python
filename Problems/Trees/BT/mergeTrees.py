@@ -1,7 +1,10 @@
 # https://leetcode.com/problems/merge-two-binary-trees/description/
 
+
 class Solution:
-    def mergeTrees(self, t1: Optional[TreeNode], t2: Optional[TreeNode]) -> Optional[TreeNode]:
+    def mergeTrees(
+        self, t1: Optional[TreeNode], t2: Optional[TreeNode]
+    ) -> Optional[TreeNode]:
         # base case
         if not t1 and not t2:
             return None

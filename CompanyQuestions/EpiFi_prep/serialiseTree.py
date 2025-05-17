@@ -5,6 +5,7 @@
 # if both children null : base case
 # O(n)
 
+
 class Codec:
     def serialize(self, root):
         """Encodes a tree to a single string.
@@ -46,6 +47,7 @@ class Codec:
             return root
 
         return preorder()
+
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()

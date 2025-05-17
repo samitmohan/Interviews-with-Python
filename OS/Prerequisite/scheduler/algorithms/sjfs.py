@@ -103,7 +103,7 @@ def main():
     processes = []
 
     for i in range(n):
-        process_id = f"P{i+1}"
+        process_id = f"P{i + 1}"
         arrival = int(input(f"Enter arrival time of {process_id}: "))
         burst = int(input(f"Enter burst time of {process_id}: "))
 

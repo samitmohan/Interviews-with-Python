@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/middle-of-the-linked-list/o
 
+
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # fast slow pointer solution

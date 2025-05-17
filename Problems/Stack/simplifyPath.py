@@ -3,7 +3,7 @@
 # /abc/.. -> /abc [.. -> root dire : pop abc and .. ignored] : /
 # single dots are always ignored and trailing / also removed.
 
-# /../abc//./def/ 
+# /../abc//./def/
 # / .. (out one direct but we're in root direc so not possible : no pop, ignore)
 # //abc : multiple slash : ignore
 # /abc/def
@@ -11,6 +11,7 @@
 # if .. and in root -> ignore, else pop (.. means pop -> remove most recently added element)
 
 # Time and Space : O(N)
+
 
 def simplifyPath(path):
     stack = []

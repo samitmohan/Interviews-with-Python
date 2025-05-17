@@ -1,14 +1,14 @@
 # https://leetcode.com/problems/design-twitter/
 # Retrieves the 10 most recent tweet IDs in the user's news feed. Each item in the news feed must be posted by users who the
 # user followed or by the user themself. Tweets must be ordered from most recent to least recent.
-'''
+"""
 Not Hashmap because we need to remove values in unfollow and removing from list is O(N) : in hashset it's O(1)
-'''
+"""
+
 from collections import defaultdict
 
 
 class Twitter:
-
     def __init__(self):
         self.users = defaultdict(set)
         self.tweets = []
@@ -35,6 +35,7 @@ class Twitter:
     def unfollow(self, followerId: int, followeeId: int) -> None:
         if followeeId in self.users[followerId]:
             self.users[followerId].remove(followeeId)
+
 
 # Your Twitter object will be instantiated and called as such:
 # obj = Twitter()

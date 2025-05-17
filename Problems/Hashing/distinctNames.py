@@ -13,7 +13,8 @@ def distinctNmaes(ideas):
     # intersection
     for char1 in hm:
         for char2 in hm:
-            if char1 == char2: continue  # if same then no answer
+            if char1 == char2:
+                continue  # if same then no answer
             intersect = 0
             for w in hm[char1]:
                 if w in hm[char2]:

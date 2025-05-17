@@ -18,7 +18,7 @@ Space : O(n * m)
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
-        ans = [[float('inf')] * (cols + 1) for r in range(rows + 1)]
+        ans = [[float("inf")] * (cols + 1) for r in range(rows + 1)]
         ans[rows - 1][cols] = 0  # outer posn 0 to make the math for out.
 
         # bottom up

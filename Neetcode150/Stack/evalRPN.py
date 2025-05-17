@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
 
+
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         # keep a stack and put elements
@@ -9,19 +10,19 @@ class Solution:
         stack = []
         while len(tokens) > 0:
             tok = tokens.pop(0)
-            if tok == '+':
+            if tok == "+":
                 a = stack.pop()
                 b = stack.pop()
                 stack.append(a + b)
-            elif tok == '-':
+            elif tok == "-":
                 a = stack.pop()
                 b = stack.pop()
                 stack.append(b - a)
-            elif tok == '*':
+            elif tok == "*":
                 a = stack.pop()
                 b = stack.pop()
                 stack.append(a * b)
-            elif tok == '/':
+            elif tok == "/":
                 a = stack.pop()
                 b = stack.pop()
                 stack.append(int(float(b / a)))

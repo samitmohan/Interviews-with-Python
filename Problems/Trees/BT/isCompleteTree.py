@@ -12,10 +12,12 @@ from collections import deque
 # push node.left and node.right and continue BFS
 # return True in the end
 
+
 class Solution:
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
         nullNodeFound = False
-        if root == None: return True  # empty tree : always a complete BT
+        if root == None:
+            return True  # empty tree : always a complete BT
         q = deque([root])
         while q:
             node = q.popleft()
@@ -24,7 +26,8 @@ class Solution:
             else:
                 # current node isn't null -> check if we've already found a nulll node : if yes -> can't be possible
                 # else -> check for node.left and node.right (BFS)
-                if nullNodeFound: return False
+                if nullNodeFound:
+                    return False
                 q.append(node.left)
                 q.append(node.right)
         return True

@@ -18,8 +18,9 @@
 
 # Traverse in reverse sorted order : less chances of error since 3 collides with 5 but what if 5 already colliding with 7
 
-# Time : O(N*logN) 
+# Time : O(N*logN)
 # Space : O(N)
+
 
 def carFleet(target, position, speed):
     pairs = [[pos, sp] for pos, sp in zip(position, speed)]

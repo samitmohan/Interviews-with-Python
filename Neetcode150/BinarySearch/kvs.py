@@ -15,8 +15,9 @@ class TimeMap:
 
     def get(self, key: str, timestamp: int) -> str:
         res = ""  # if not exist just return empty
-        values = self.store.get(key,
-                                [])  # find match it'll return that list if doesn't then returns empty list (by default) [values is a list]
+        values = self.store.get(
+            key, []
+        )  # find match it'll return that list if doesn't then returns empty list (by default) [values is a list]
 
         # binary  search
         low, high = 0, len(values) - 1

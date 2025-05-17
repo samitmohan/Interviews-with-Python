@@ -20,10 +20,14 @@ class Solution:
 
         canTake = [i for i in range(numCourses) if len(ingoing[i]) == 0]
         taken = 0
-        while len(canTake) > 0:  # pop -> remove ingoing edges and their relationships with outgoing edges
+        while (
+            len(canTake) > 0
+        ):  # pop -> remove ingoing edges and their relationships with outgoing edges
             take = canTake.pop()
             taken += 1
-            for next_course in outgoing[take]:  # take -> next_course :: from outgoing edges of take : remove
+            for next_course in outgoing[
+                take
+            ]:  # take -> next_course :: from outgoing edges of take : remove
                 ingoing[next_course].remove(take)
                 if len(ingoing[next_course]) == 0:
                     canTake.append(next_course)  # check for next

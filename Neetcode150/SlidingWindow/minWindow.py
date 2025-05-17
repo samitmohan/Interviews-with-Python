@@ -2,6 +2,7 @@
 
 # https://www.youtube.com/watch?v=DfljaUwZsOk : DIFFICULT PROBLEM : revisit
 
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if t == "":
@@ -32,4 +33,4 @@ class Solution:
                     have -= 1
                 left += 1
         left, right = ans
-        return s[left: right + 1] if minLength != float("infinity") else ""
+        return s[left : right + 1] if minLength != float("infinity") else ""

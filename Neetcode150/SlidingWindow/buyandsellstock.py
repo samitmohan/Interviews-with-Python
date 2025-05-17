@@ -2,6 +2,7 @@
 # find minimum price : pick that for day 1
 # find max(maxprofit, price_on_each_day - minimum_price)
 
+
 def maxProfit(prices):
     max_profit = 0
     minimum = prices[0]

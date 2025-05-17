@@ -1,12 +1,12 @@
 # https://leetcode.com/problems/implement-queue-using-stacks
-'''
+"""
  queue -> fifo -> push -> adds to starting of lis
  peek -> returns list[0]
  pop -> removes first element
  empty -> bool -> checks if list[0] present or not
 
 2 stacks when used as dump in and dump out -> works as queue
-'''
+"""
 
 
 class MyQueue:
@@ -34,4 +34,6 @@ class MyQueue:
         # if out stack empty and in stack not empty -> place in stack elements in out stack
         if not self.out_stack:
             while self.in_stack:
-                self.out_stack.append(self.in_stack.pop())  # place in out stack and pop elemnts from in stack
+                self.out_stack.append(
+                    self.in_stack.pop()
+                )  # place in out stack and pop elemnts from in stack

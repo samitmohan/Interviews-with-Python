@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/repeated-string-match/
-'''
-        minimum number of times a should be repeated st b is 
+"""
+        minimum number of times a should be repeated st b is
         substring of it.
         if impossible : return -1
 
@@ -21,25 +21,30 @@ cdabcdab : 8
 abcdabcd ab left
 
 I need to repeat 'a' enough times such that total length of a is atleast len(b)
-repeat = ceil(len_b/len_a) 
+repeat = ceil(len_b/len_a)
 so its either repeat or repeat+1 -> depending which case b becomes a substring.
 repeat + 1
 repeated_string = string  * repeat
 
 if b in repeated_string: return repeat
-'''
+"""
+
 from math import ceil
+
+
 class Solution:
     def repeatedStringMatch(self, a: str, b: str) -> int:
         repeat = ceil(len(b) / len(a))
-        repeat_new = repeat+1
-        repeated_string = (a*repeat) # abcdabcd
-        repeated_string_new = (a * repeat_new) # abcdabcdabcd
-        if b in repeated_string: return repeat
-        elif b in repeated_string_new: return repeat + 1
+        repeat_new = repeat + 1
+        repeated_string = a * repeat  # abcdabcd
+        repeated_string_new = a * repeat_new  # abcdabcdabcd
+        if b in repeated_string:
+            return repeat
+        elif b in repeated_string_new:
+            return repeat + 1
         return -1
+
+
 s = Solution()
 print(s.repeatedStringMatch("abcd", "cdabcdab"))
-print(s.repeatedStringMatch(a = "a", b = "aa"))
-
-
+print(s.repeatedStringMatch(a="a", b="aa"))

@@ -3,12 +3,12 @@
 Goal : smaller values : convert to target
 Target : [2,7,5]
 [1,8,4] : 8 is bigger than the value we're looking for.
-So False : 
+So False :
     Observation : any triplet that has any single val > target triplet : false
 Left inputs : [2,5,3], [1,7,5]
 Go through triplet if target[i] in triplets : gurantee that somehow we can combine the triplets to target
 Either equal or less than target.
-1. Go through triplets, filter out values > target 
+1. Go through triplets, filter out values > target
 2. Any of remaining triplets, can we reach target values (all 3) : True else False
 
 Time : O(n)

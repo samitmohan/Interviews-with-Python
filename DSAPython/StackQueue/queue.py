@@ -1,5 +1,6 @@
 # With and without using inbuilt methods.
 
+
 class Queue:
     def __init__(self):
         self.queue = []

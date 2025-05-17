@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/longest-repeating-character-replacement/
-'''
+"""
 standard sliding window technique
 1. hashmap to keep count of alphabets in our window
 2. sliding window : if window not valid : shift left pointer by one and also decrement hashmap value of left by one (update)
@@ -7,7 +7,7 @@ standard sliding window technique
   . not valid? sizeWindow (r-l+1) - max(hm.values()) > k
 3. if valid : ans = max(ans, window size) : return ans (since we have to return length of longest substring = length of window = window size)
 
-'''
+"""
 
 
 class Solution:

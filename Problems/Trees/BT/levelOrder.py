@@ -12,7 +12,7 @@ import collections
 # ans = [[1],[2,3],[4,5,6,7]]
 
 
-# Logic : BFS using Queue : While queue is not empty, check for left and right nodes 
+# Logic : BFS using Queue : While queue is not empty, check for left and right nodes
 #  if left child exists, push in queue, if right child exists push in queue
 #  once exploration of one level is over, put that level in ans
 
@@ -42,7 +42,8 @@ class Solution:
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         ans = []
-        if not root: return ans
+        if not root:
+            return ans
         q = collections.deque()
         q.append(root)  # add root element
         while q:
@@ -59,6 +60,7 @@ class Solution:
 
             ans.append(level)
         return ans
+
 
 # or
 # node = q.popleft()

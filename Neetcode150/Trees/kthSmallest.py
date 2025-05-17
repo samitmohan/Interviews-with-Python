@@ -5,7 +5,8 @@ class Solution:
         ans = []
 
         def inorder(root):
-            if not root: return
+            if not root:
+                return
             inorder(root.left)
             ans.append(root.val)
             inorder(root.right)
@@ -16,14 +17,14 @@ class Solution:
 
 # Optimised:
 
-'''
+"""
 Property oF BST : inorder : sorted
 after inorder get the 3rd element
 T & S : O(n) and O(n)
 
 How to reduce space? Use a counter in the function. Once node reached in inorder : do counter += 1
   if counter == k (we have reached our answer) : ans = node
-'''
+"""
 
 
 # Doesn't work.
@@ -31,7 +32,8 @@ def inorder(self, root, k, counter, ans):
     if root:
         self.inorder(root.left, k, counter, ans)
         counter += 1
-        if counter == k: ans = root.val
+        if counter == k:
+            ans = root.val
         self.inorder(root.right, k, counter, ans)
 
 

@@ -11,6 +11,7 @@
 # [-2, 0, 3, -5, 2, -1]
 # prefix_sum : [-2, -2, 1, -4, -2, -3] :: 1 - 0(L-1th index : out of bounds) = 1
 
+
 class NumArray:
     def __init__(self, nums: List[int]):
         self.prefix_sum = []

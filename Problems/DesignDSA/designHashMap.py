@@ -22,13 +22,15 @@ class MyHashMap:
         if self.buckets[index] == -1:
             return -1
         for k, v in self.buckets[index]:
-            if k == key: return v
+            if k == key:
+                return v
         return -1
 
     def remove(self, key: int) -> None:
         index = key % self.number_of_buckets
         index_to_remove = -1
-        if self.buckets[index] == -1: return
+        if self.buckets[index] == -1:
+            return
         for i, kvPair in enumerate(self.buckets[index]):
             if kvPair[0] == key:
                 index_to_remove = i

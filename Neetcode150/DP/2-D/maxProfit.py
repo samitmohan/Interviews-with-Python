@@ -12,12 +12,16 @@ class Solution:
         dp = {}  # key : (i, buying) val : max_profit [buying : boolean]
 
         def dfs(i, buying):
-            if i >= len(prices): return 0
-            if (i, buying) in dp: return dp[(i, buying)]
+            if i >= len(prices):
+                return 0
+            if (i, buying) in dp:
+                return dp[(i, buying)]
 
             # main
             if buying:
-                buy = dfs(i + 1, not buying) - prices[i]  # profit = price to buy - og price
+                buy = (
+                    dfs(i + 1, not buying) - prices[i]
+                )  # profit = price to buy - og price
                 cooldown = dfs(i + 1, buying)
                 dp[(i, buying)] = max(buy, cooldown)
             else:

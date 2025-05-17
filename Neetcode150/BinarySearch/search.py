@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/binary-search/submissions/902377492/ 
+# https://leetcode.com/problems/binary-search/submissions/902377492/
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         low, high = 0, len(nums) - 1

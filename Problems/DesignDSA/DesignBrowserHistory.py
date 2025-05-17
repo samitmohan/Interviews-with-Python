@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/design-browser-history/description/
-# Doubly Linked List 
+# Doubly Linked List
 # init
 # current pointer = current homepage (google.com)
 # visit (leetcode.com)
@@ -23,7 +23,9 @@ class BrowserHistory:
         self.curr = ListNode(homepage)  # google
 
     def visit(self, url: str) -> None:
-        self.curr.next = ListNode(url, self.curr)  # google -> leetcode and leetcode -> google
+        self.curr.next = ListNode(
+            url, self.curr
+        )  # google -> leetcode and leetcode -> google
         self.curr = self.curr.next  # update current (lc not google)
 
     def back(self, steps: int) -> str:

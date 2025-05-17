@@ -1,11 +1,11 @@
-'''
+"""
 # https://leetcode.com/problems/total-characters-in-string-after-transformations-i/?envType=daily-question&envId=2025-05-13
 Keep a set of alphabets
-    
+
 abcyy
 two transformations
 first trans
-a -> b 
+a -> b
 b -> c
 c -> d
 y -> z
@@ -37,7 +37,7 @@ Gist of the problem  (Bruteforce)
 final_str = ''
 for every_t in range(t):
     for ch in s:
-        if ch == 'z': 
+        if ch == 'z':
             final_str += 'ab'
         else:
             final_str += chr(ord(ch) + 1)
@@ -52,7 +52,7 @@ for _ in range(t):
     s = ''.join('ab' if ch == 'z' else chr(ord(ch) + 1) for ch in s)
 return len(s)
 
-OR 
+OR
 
 char_Freq = counter(s)
 for _ in range(t):
@@ -73,7 +73,7 @@ c -> d
 y -> z
 y -> z
 
-Every transformation is deterministic and character-wise. 
+Every transformation is deterministic and character-wise.
 The only length-changing operation is when 'z' turns into 'ab', increasing the total count by 1 for every 'z'
 
 Since I only care about length -> I can only increment length by 1 when I encounter z and also need to keep freq of char that
@@ -91,7 +91,7 @@ freq[26] : a-to-z array
 
 >>> for ch in s:
 ...     a[ord(ch) - ord('a')] += 1
-...     
+...
 >>> a
 [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0]
 
@@ -115,33 +115,39 @@ new length = 2 (original) + 1 ('z' → 'ab') = 3
 
 And so on...
 
-'''
+"""
+
 
 def lengthAfterTransformations(s: str, t: int) -> int:
-    freq = [0] * 26 
+    freq = [0] * 26
     ans = len(s)
     for ch in s:
-        freq[ord(ch) - ord('a')] += 1 # [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0]
+        freq[ord(ch) - ord("a")] += (
+            1  # [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0]
+        )
     for _ in range(t):
-        new_freq = [0] * 26 
+        new_freq = [0] * 26
         # for i in range(25): # a to y
         for i in range(max(0, 25 - t), 25):  # 'a' to 'y', but skip early ones
-            new_freq[i+1] += freq[i] # a becomes b, b becomes c (count)
+            new_freq[i + 1] += freq[i]  # a becomes b, b becomes c (count)
         # for z
-        new_freq[0] += freq[25] # number of z -> change to ab
-        new_freq[1] += freq[25] 
-        ans += freq[25] # final ans is just the count of z's
-        freq = new_freq # update
+        new_freq[0] += freq[25]  # number of z -> change to ab
+        new_freq[1] += freq[25]
+        ans += freq[25]  # final ans is just the count of z's
+        freq = new_freq  # update
     return ans
-    
 
-'''
+
+"""
 More optimisation-:
 During the loop, instead of blindly looping i in range(25) (all characters)
 loop only through characters where: 25 - i <= t
-'''
+"""
+
 
 def main():
-    print(lengthAfterTransformations(s = "abcyy", t = 2)) # 7
-    print(lengthAfterTransformations( s = "azbk", t = 1)) # 5
+    print(lengthAfterTransformations(s="abcyy", t=2))  # 7
+    print(lengthAfterTransformations(s="azbk", t=1))  # 5
+
+
 main()

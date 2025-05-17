@@ -4,9 +4,10 @@
 
 # 2 counters : open brackets and close brackets
 # only add open parenthesis in stack if open < n
-# only add closing parentheses in stack if closed < open 
+# only add closing parentheses in stack if closed < open
 # valid if open == closed == n (base case)
 # backtrack every time : single variable stack : pop()
+
 
 def generateParenthesis(n):
     stack = []
@@ -18,12 +19,12 @@ def generateParenthesis(n):
             return
 
         if open_count < n:
-            stack.append('(')
+            stack.append("(")
             backtrack(open_count + 1, closed_count)
             stack.pop()  # backtrack : single var stack
 
         if closed_count < open_count:
-            stack.append(')')
+            stack.append(")")
             backtrack(open_count, closed_count + 1)
             stack.pop()
 

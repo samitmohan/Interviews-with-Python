@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/reverse-nodes-in-k-group/description/
-'''
+"""
 Use a dummy head, and
 
 l, r : define reversing range
@@ -7,7 +7,7 @@ l, r : define reversing range
 pre, cur : used in reversing, standard reverse linked linked list method
 
 jump : used to connect last node in previous k-group to first node in following k-group
-'''
+"""
 
 
 class Solution:

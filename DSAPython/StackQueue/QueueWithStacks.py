@@ -3,6 +3,7 @@
 # pop -> removes first element
 # empty -> bool -> checks if list[0] present or not
 
+
 class QueueWithStacks:
     # use 2 lists -> in and out and move elements -> O(N)
     def __init__(self):
@@ -28,7 +29,9 @@ class QueueWithStacks:
         # if out stack empty and in stack not empty -> place in stack elements in out stack
         if not self.out_stack:
             while self.in_stack:
-                self.out_stack.append(self.in_stack.pop())  # place in out stack and pop elemnts from in stack
+                self.out_stack.append(
+                    self.in_stack.pop()
+                )  # place in out stack and pop elemnts from in stack
 
 
 q = QueueWithStacks()

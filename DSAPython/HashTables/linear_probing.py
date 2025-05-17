@@ -17,6 +17,7 @@
 # slots : [_,_,python,_,_,_] # key
 # data : [_,_,37,_,_,_] # value
 
+
 class Dictioanry:
     def __init__(self, size):
         self.size = size
@@ -25,17 +26,24 @@ class Dictioanry:
 
     def put(self, key, value):
         hash_value = self.hash_function(key)
-        if self.slots[hash_value] == None:  # if empty : put key in slot and value in data
+        if (
+            self.slots[hash_value] == None
+        ):  # if empty : put key in slot and value in data
             self.slots[hash_value] = key
             self.data[hash_value] = value
         else:
             # 2 options : same key already present : update value || different key present : rehash
             if self.slots[hash_value] == key:
-                self.data[hash_value] = value  # update with new value (no need to change key)
+                self.data[hash_value] = (
+                    value  # update with new value (no need to change key)
+                )
             else:
                 new_hash_value = self.rehash(hash_value)
                 # keep iterating ahead until empty space found -> to put the value && same key already present : [c++, java, php, python, _] and key = python -> then it'll place it in _ (it shouldn't)
-                while self.slots[new_hash_value] != None and self.slots[new_hash_value] != key:
+                while (
+                    self.slots[new_hash_value] != None
+                    and self.slots[new_hash_value] != key
+                ):
                     new_hash_value = self.rehash(new_hash_value)
 
                 if self.slots[new_hash_value] == None:
@@ -50,8 +58,9 @@ class Dictioanry:
         # how to know if item not present : if start_pos = end_pos (checked everything) || empty slot found
         start_pos = self.hash_function(key)
         current_pos = start_pos
-        while self.slots[
-            current_pos] != None:  # keep looking until empty slot found -> empty slot represnts value not present
+        while (
+            self.slots[current_pos] != None
+        ):  # keep looking until empty slot found -> empty slot represnts value not present
             if self.slots[current_pos] == key:
                 return self.data[current_pos]
             current_pos = self.rehash(current_pos)  # increment by 1 every time
@@ -85,8 +94,8 @@ d1 = Dictioanry(3)
 print(d1.slots)  # None None None
 print(d1.data)  # None None None
 
-d1['python'] = 56
-d1['c++'] = 100
-d1['java'] = 230
-print(d1.get('java'))  # 230
+d1["python"] = 56
+d1["c++"] = 100
+d1["java"] = 230
+print(d1.get("java"))  # 230
 print(d1)  # c++ : 100, java : 230, python : 56,

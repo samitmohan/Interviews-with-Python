@@ -19,7 +19,9 @@ Return sublist
 
 
 class Solution:
-    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+    def suggestedProducts(
+        self, products: List[str], searchWord: str
+    ) -> List[List[str]]:
         ans = []
         products.sort()
         L, R = 0, len(products) - 1
@@ -27,9 +29,13 @@ class Solution:
             char_to_compare = searchWord[i]
             # eliminate words not in prefix
             # product doesn't have ith character or ith character is not equal to character we are looking for
-            while L <= R and (len(products[L]) <= i or products[L][i] != char_to_compare):
+            while L <= R and (
+                len(products[L]) <= i or products[L][i] != char_to_compare
+            ):
                 L += 1
-            while L <= R and (len(products[R]) <= i or products[R][i] != char_to_compare):
+            while L <= R and (
+                len(products[R]) <= i or products[R][i] != char_to_compare
+            ):
                 R -= 1
 
             # valid answers

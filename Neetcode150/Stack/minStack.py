@@ -5,6 +5,7 @@
 # other stack tells min value added at each position of stack [minStack]
 # top value of other stack : getMin() in O(1)
 
+
 class MinStack:
     def __init__(self):
         self.stack = []

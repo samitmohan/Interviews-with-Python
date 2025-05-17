@@ -3,8 +3,8 @@
 import math
 from typing import List
 
-class NumArray:
 
+class NumArray:
     def __init__(self, nums: List[int]):
         self.nums = nums
         self.n = len(nums)
@@ -21,8 +21,9 @@ class NumArray:
             st[si] = arr[ss]
             return arr[ss]
         mid = self._getMid(ss, se)
-        st[si] = self._constructSegTree_helper(arr, ss, mid, st, si * 2 + 1) + \
-                 self._constructSegTree_helper(arr, mid + 1, se, st, si * 2 + 2)
+        st[si] = self._constructSegTree_helper(
+            arr, ss, mid, st, si * 2 + 1
+        ) + self._constructSegTree_helper(arr, mid + 1, se, st, si * 2 + 2)
         return st[si]
 
     def update(self, index: int, val: int) -> None:
@@ -52,5 +53,6 @@ class NumArray:
         if se < qs or ss > qe:
             return 0
         mid = self._getMid(ss, se)
-        return self._getSum_helper(ss, mid, qs, qe, 2 * si + 1) + \
-               self._getSum_helper(mid + 1, se, qs, qe, 2 * si + 2)
+        return self._getSum_helper(ss, mid, qs, qe, 2 * si + 1) + self._getSum_helper(
+            mid + 1, se, qs, qe, 2 * si + 2
+        )

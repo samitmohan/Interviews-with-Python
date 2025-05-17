@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/lexicographically-smallest-equivalent-string/description/
 
+
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         UF = {}
@@ -35,4 +36,4 @@ class Solution:
         for c in baseStr:
             res.append(find(c))
 
-        return ''.join(res)
+        return "".join(res)

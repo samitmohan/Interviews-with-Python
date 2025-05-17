@@ -21,7 +21,9 @@ Steps: dfs -> build hashmap (serialised tree string) -> if seen before -> add to
 
 
 class Solution:
-    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
+    def findDuplicateSubtrees(
+        self, root: Optional[TreeNode]
+    ) -> List[Optional[TreeNode]]:
         subtree = defaultdict(list)
 
         def preorder(root):

@@ -48,6 +48,7 @@ but if j out of bounds but i in bounds : doesn't work : must return false
 
 Both out of bounds : Pattern has matched : return True
 """
+
 from functools import cache
 
 
@@ -66,13 +67,17 @@ class Solution:
                 return False
             # i can be out of bounds still
             # match between first character
-            match = i < len(s) and (s[i] == p[j] or p[j] == ".")  # . matches to any character
+            match = i < len(s) and (
+                s[i] == p[j] or p[j] == "."
+            )  # . matches to any character
 
             # * has the highest precedence and first char in j can never be star
             # can only use * if there is a match
             if (j + 1) < len(p) and p[j + 1] == "*":
-                dp[(i, j)] = (backtrack(i, j + 2) or  # don't use the *
-                              (match and backtrack(i + 1, j)))  # use the *
+                dp[(i, j)] = (
+                    backtrack(i, j + 2)  # don't use the *
+                    or (match and backtrack(i + 1, j))
+                )  # use the *
                 return dp[(i, j)]
 
             if match:

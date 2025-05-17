@@ -1,6 +1,6 @@
 from math import ceil
 
-'''
+"""
 https://leetcode.com/problems/count-good-numbers/
 n = 0 : 0
 n = 1 : 5 numbers (0,2,4,6,8)
@@ -43,11 +43,14 @@ n = 5, even indices = 3, odd indices = 2, 5^3 * 4^2 = 2000
 # prime_digits = 4 #(prime)
 # evenPosn, oddPosn = (n + 1) // 2, n // 2
 # return pow(even_digits, evenPosn, MOD) * pow(prime_digits, oddPosn, MOD) % MOD
-'''
+"""
+
+
 class Solution:
     def countGoodNumbers(self, n: int) -> int:
         # one liner (walrus operator ftw)
-        return pow(5, ceil(n/2), mod:=10**9 + 7) * pow(4, n//2, mod) % mod
+        return pow(5, ceil(n / 2), mod := 10**9 + 7) * pow(4, n // 2, mod) % mod
+
 
 ans = Solution()
 print(ans.countGoodNumbers(3))

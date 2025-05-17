@@ -17,11 +17,11 @@ len(A) > len(B) : odd number
 By default the elements can go in any heap : small heap (if ppt failing -> remove max from small heap and add to
 large heap) Similarly if len(B) >> len(A) : move min element from large heap and move to small heap MAKE SURE
 DIFFERENCE BETWEEN BOTH HEAPS IS LESS OR EQUAL TO 1"""
+
 import heapq
 
 
 class MedianFinder:
-
     def __init__(self):
         # two heaps : large = minheap and small : maxheap
         # heaps should be equal size
@@ -36,20 +36,27 @@ class MedianFinder:
             heapq.heappush(self.large, val)
 
         # uneven size? difference is 2 or more
-        if len(self.small) > len(self.large) + 1:  # small is too big -> pop from small and push in large
+        if (
+            len(self.small) > len(self.large) + 1
+        ):  # small is too big -> pop from small and push in large
             val = -1 * heapq.heappop(self.small)
             heapq.heappush(self.large, val)
-        if len(self.large) > len(self.small) + 1:  # large is too big -> pop from large and push in small
+        if (
+            len(self.large) > len(self.small) + 1
+        ):  # large is too big -> pop from large and push in small
             val = heapq.heappop(self.large)
             heapq.heappush(self.small, -1 * val)
 
     def findMedian(self) -> float:
-        if len(self.small) > len(self.large):  # odd elements (small has one more extra element)
+        if len(self.small) > len(
+            self.large
+        ):  # odd elements (small has one more extra element)
             return -1 * self.small[0]
         if len(self.large) > len(self.small):
             return self.large[0]
         # both equal : median
         return (-1 * self.small[0] + self.large[0]) / 2
+
 
 # Your MedianFinder object will be instantiated and called as such:
 # obj = MedianFinder()

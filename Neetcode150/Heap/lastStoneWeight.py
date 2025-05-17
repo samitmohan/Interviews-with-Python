@@ -15,5 +15,6 @@ class Solution:
             if first != second:
                 heapq.heappush(heap, first - second)
         # edge case : if stones empty
-        if len(heap) == 0: return 0
+        if len(heap) == 0:
+            return 0
         return -1 * heap[0]  # first element (converting - val to pos by * -1)

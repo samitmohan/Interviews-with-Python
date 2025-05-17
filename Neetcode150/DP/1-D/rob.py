@@ -5,6 +5,7 @@
 # use dp to store state of the max robbery till now.
 # Time : O(n)
 
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
         prev_to_prev_val, current, prev = 0, 0, 0

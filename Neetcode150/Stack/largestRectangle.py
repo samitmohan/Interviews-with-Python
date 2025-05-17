@@ -5,7 +5,7 @@
 
 # https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 
-'''
+"""
 Cases :
   1 -> [2,1] : can't extend it as there will be a gap since 2 > 1
   2 -> [1,2] : can extend it easily to get a area of 2 since there will be no gap 1 < 2
@@ -19,7 +19,7 @@ Similar example
 
 Stack : hold index and height
 compute and return maxArea_so_far
-'''
+"""
 
 
 def largestRectangleArea(heights):
@@ -27,7 +27,9 @@ def largestRectangleArea(heights):
     stack = []  # pair : (index, height)
     for i, h in enumerate(heights):
         start = i
-        while stack and stack[-1][1] > h:  # if height of top element of stack > current height [2,1] : pop
+        while (
+            stack and stack[-1][1] > h
+        ):  # if height of top element of stack > current height [2,1] : pop
             index, height = stack.pop()
             maxArea = max(maxArea, height * (i - index))  # width
             start = index

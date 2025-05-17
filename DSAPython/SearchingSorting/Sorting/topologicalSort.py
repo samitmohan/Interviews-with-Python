@@ -11,6 +11,7 @@ def dfs(graph, node, visited, stack):
 
 # DFS method
 
+
 def topological_sort_dfs(graph):
     visited = {node: False for node in graph}
     stack = []
@@ -21,6 +22,7 @@ def topological_sort_dfs(graph):
 
 
 # Indegree 0 method
+
 
 def topological_sort_kahn(graph):
     in_degree = {node: 0 for node in graph}
@@ -41,13 +43,6 @@ def topological_sort_kahn(graph):
     return sorted_order
 
 
-graph = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['E'],
-    'D': ['F'],
-    'E': ['F'],
-    'F': []
-}
+graph = {"A": ["B", "C"], "B": ["D", "E"], "C": ["E"], "D": ["F"], "E": ["F"], "F": []}
 print(topological_sort_dfs(graph))  # Output: ['A', 'C', 'E', 'B', 'D', 'F']
 print(topological_sort_kahn(graph))  # Output: ['A', 'C', 'B', 'E', 'D', 'F']

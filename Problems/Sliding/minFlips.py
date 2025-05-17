@@ -9,17 +9,21 @@ class Solution:
         for i in range(len(s)):
             alt1 += "0" if i % 2 else "1"
             alt2 += "1" if i % 2 else "0"
-        minflips = float('inf')
+        minflips = float("inf")
         diff1, diff2, left = 0, 0, 0
         for right in range(len(s)):
             # calculate differences between alternate and string
-            if s[right] != alt1[right]: diff1 += 1
-            if s[right] != alt2[right]: diff2 += 1
+            if s[right] != alt1[right]:
+                diff1 += 1
+            if s[right] != alt2[right]:
+                diff2 += 1
             # if sliding window bound reached (size : r-l+1)
             if (right - left + 1) > n:
                 # subtract left value from both alt1 and alt2 (only if they're not equal)
-                if s[left] != alt1[left]: diff1 -= 1
-                if s[left] != alt2[left]: diff2 -= 1
+                if s[left] != alt1[left]:
+                    diff1 -= 1
+                if s[left] != alt2[left]:
+                    diff2 -= 1
 
                 # shift left pointer by 1
                 left += 1

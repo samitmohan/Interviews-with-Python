@@ -1,6 +1,6 @@
-'''
+"""
 Travelling Salesman
-Given a list of cities and the distances between each pair of cities, 
+Given a list of cities and the distances between each pair of cities,
 What is the shortest possible route that visits each city exactly once and returns to the origin city?
 
 Difficult to solve, easy to verify which makes it NP Hard
@@ -14,8 +14,8 @@ Find the shortest possible route that:
  However, for n different cities, there are n! different possible paths.
 
 If you only want to visit 5 cities there are 120 different possible paths between them
-probably too many to compute by hand but easy to evaluate with a computer. However, factorials grow very quickly. 
- If you are trying to visit 30 cities, there are 30! different paths. 
+probably too many to compute by hand but easy to evaluate with a computer. However, factorials grow very quickly.
+ If you are trying to visit 30 cities, there are 30! different paths.
 This is a huge number. Its about 265 nonillion and has 33 digits. Even for a computer, this is too many paths to examine individually.
 
 Algorithm             | Approach                 | Complexity         |
@@ -25,19 +25,19 @@ Algorithm             | Approach                 | Complexity         |
 | Branch and Bound      | Exact                    | O(n!)              |
 | Genetic Algorithms    | Heuristic                | Depends on params  |
 
-The time complexity is determined by the total number of permutations. 
+The time complexity is determined by the total number of permutations.
 Since the number of permutations is (n-1)! * n, the time complexity of the brute force method to solve the TSP is O((n-1)! * n) which can be simplified to O(n!).
 
 Cities	Use Brute Force?	Use Held-Karp (DP)?
 ≤ 8	    ✅ Yes	           ✅ Optional
 9–16	❌ No	           ✅ Yes
 > 20	❌ No	           ⚠ Too slow (use heuristics like Genetic/ACO)
-'''
-
+"""
 
 import matplotlib.pyplot as plt
 import random
 import time
+
 
 def visualise(cities, path, city_labels):
     x, y = [cities[i][0] for i in path], [cities[i][1] for i in path]
@@ -45,20 +45,23 @@ def visualise(cities, path, city_labels):
     for i, (x_coord, y_coord) in enumerate(cities):
         plt.text(x_coord + 0.3, y_coord, f"{city_labels[i]}", fontsize=9)
 
-    plt.plot(x, y, 'o-', color='blue', markersize=10, linewidth=2)
+    plt.plot(x, y, "o-", color="blue", markersize=10, linewidth=2)
     plt.title("TSP Path Visualization")
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.grid(True)
     plt.show()
 
+
 # Brute Force soln -> O(N!) -> generates all possible permutations and calc total dist for each permutation
 from itertools import permutations
+
+
 def tsp_BF(matrix, city_labels, cities, use_custom_perm=False):
-    ''' returns shortest distance / min cost to travel all states and come back in factorial time'''
-    matrix[0][0] = 0 # start point
+    """returns shortest distance / min cost to travel all states and come back in factorial time"""
+    matrix[0][0] = 0  # start point
     start = 0
-    min_cost = float('inf')
+    min_cost = float("inf")
     indices = [i for i in range(len(matrix)) if i != start]
     perms = generate_permutations(indices) if use_custom_perm else permutations(indices)
 
@@ -68,7 +71,7 @@ def tsp_BF(matrix, city_labels, cities, use_custom_perm=False):
         path = [start] + list(i) + [start]
         dist = 0
         for j in range(len(path) - 1):
-            dist += matrix[path[j]][path[j+1]] # adj paths
+            dist += matrix[path[j]][path[j + 1]]  # adj paths
 
         if dist < min_cost:
             min_cost = dist
@@ -77,22 +80,22 @@ def tsp_BF(matrix, city_labels, cities, use_custom_perm=False):
     # visualise(cities, best_path)
     return min_cost, best_path_labels
 
+
 # itertools.permutations
 def generate_permutations(arr):
-    if len(arr) == 0: return [[]]
+    if len(arr) == 0:
+        return [[]]
     perms = []
     for i in range(len(arr)):
         curr = arr[i]
-        rest = arr[:i] + arr[i+1:]
+        rest = arr[:i] + arr[i + 1 :]
         for p in generate_permutations(rest):
             perms.append([curr] + p)
     return perms
 
 
-
-
 # DP Solution
-'''
+"""
 we build optimal paths from smaller subsets using memoization.
 for n cities we have 2^n possible subsets
 each subset can be represented using bitmask
@@ -138,20 +141,22 @@ function algorithm TSP (G, n) is
     return (opt)
 end function
 
-'''
+"""
+
 
 def tsp_DP(graph, city_labels, cities):
-    '''Dynamic Programming + Bitmasking approach to solve TSP in O(n^2 * 2^n)'''
+    """Dynamic Programming + Bitmasking approach to solve TSP in O(n^2 * 2^n)"""
     n = len(graph)
     ALL_VISITED = (1 << n) - 1
-    dp = [[float('inf')] * n for _ in range(1 << n)]
+    dp = [[float("inf")] * n for _ in range(1 << n)]
     parent = [[-1] * n for _ in range(1 << n)]
 
     dp[1][0] = 0  # Start at city 0 with only city 0 visited
 
     for mask in range(1 << n):
         for u in range(n):
-            if not (mask & (1 << u)): continue
+            if not (mask & (1 << u)):
+                continue
             for v in range(n):
                 if (mask & (1 << v)) == 0:
                     new_mask = mask | (1 << v)
@@ -161,7 +166,7 @@ def tsp_DP(graph, city_labels, cities):
                         parent[new_mask][v] = u
 
     # minimum cost to return to starting city (0)
-    min_cost = float('inf')
+    min_cost = float("inf")
     last_city = -1
     for i in range(1, n):
         cost = dp[ALL_VISITED][i] + graph[i][0]
@@ -185,46 +190,52 @@ def tsp_DP(graph, city_labels, cities):
     return min_cost, best_path_labels
 
 
-
 # Nearest Neighbor Algorithm
 
 
 def main():
     # BF
     # graph[i][j] is the distance from city i to city j
-            # Delhi Bombay Bihar Bangalore
-    #Delhi  [                             ]
-    #Bombay [                             ]
-    #Bihar  [                             ]
-    #Bangalore [                          ]
+    # Delhi Bombay Bihar Bangalore
+    # Delhi  [                             ]
+    # Bombay [                             ]
+    # Bihar  [                             ]
+    # Bangalore [                          ]
 
     graph = [
-    #             D     B     Bi    Ba    C     K     H     J     L
-        [  0,   1162,  908,  1744,  2210, 1300, 1420,  280,  500],  # Delhi
-        [1162,    0,   840,   845,  1030, 1960,  710, 1150, 1100],  # Bombay
-        [ 908,  840,     0,  1568,  1820,  480, 1120,  780,  420],  # Bihar
-        [1744, 845,  1568,     0,   350,  1600,  500, 1600, 1300],  # Bangalore
-        [2210,1030, 1820,   350,     0,  1670,  630, 1850, 1400],  # Chennai
-        [1300,1960,  480,  1600,  1670,    0, 1220,  950,  800],   # Kolkata
-        [1420, 710, 1120,   500,   630,  1220,   0, 1350,  920],   # Hyderabad
-        [ 280,1150,  780,  1600,  1850,  950, 1350,    0,  400],   # Jaipur
-        [ 500,1100,  420,  1300,  1400,  800,  920,  400,    0],   # Lucknow
+        #             D     B     Bi    Ba    C     K     H     J     L
+        [0, 1162, 908, 1744, 2210, 1300, 1420, 280, 500],  # Delhi
+        [1162, 0, 840, 845, 1030, 1960, 710, 1150, 1100],  # Bombay
+        [908, 840, 0, 1568, 1820, 480, 1120, 780, 420],  # Bihar
+        [1744, 845, 1568, 0, 350, 1600, 500, 1600, 1300],  # Bangalore
+        [2210, 1030, 1820, 350, 0, 1670, 630, 1850, 1400],  # Chennai
+        [1300, 1960, 480, 1600, 1670, 0, 1220, 950, 800],  # Kolkata
+        [1420, 710, 1120, 500, 630, 1220, 0, 1350, 920],  # Hyderabad
+        [280, 1150, 780, 1600, 1850, 950, 1350, 0, 400],  # Jaipur
+        [500, 1100, 420, 1300, 1400, 800, 920, 400, 0],  # Lucknow
     ]
 
     city_labels = [
-        "Delhi", "Bombay", "Bihar", "Bangalore",
-        "Chennai", "Kolkata", "Hyderabad", "Jaipur", "Lucknow"
+        "Delhi",
+        "Bombay",
+        "Bihar",
+        "Bangalore",
+        "Chennai",
+        "Kolkata",
+        "Hyderabad",
+        "Jaipur",
+        "Lucknow",
     ]
     cities = [
-        (0, 0),       # Delhi
-        (1162, 0),    # Bombay
-        (894, 800),   # Bihar
+        (0, 0),  # Delhi
+        (1162, 0),  # Bombay
+        (894, 800),  # Bihar
         (1744, 500),  # Bangalore
-        (1600, -400), # Chennai
-        (1700, 1100), # Kolkata
+        (1600, -400),  # Chennai
+        (1700, 1100),  # Kolkata
         (1350, 200),  # Hyderabad
-        (300, 100),   # Jaipur
-        (700, 400),   # Lucknow
+        (300, 100),  # Jaipur
+        (700, 400),  # Lucknow
     ]
     # True = Custom Perm (19 microsec) | False = Itertools (10 microsec)
     use_custom_perm = True
@@ -233,14 +244,17 @@ def main():
     print(f"\n Brute Force Method ({method})")
     print(f"Using: {method}")
     start_time = time.perf_counter()
-    min_cost, best_path = tsp_BF(graph, city_labels, cities, use_custom_perm=use_custom_perm)
+    min_cost, best_path = tsp_BF(
+        graph, city_labels, cities, use_custom_perm=use_custom_perm
+    )
     end_time = time.perf_counter()
     execution_time_ms = (end_time - start_time) * 1000000
     print(f"Execution Time: {execution_time_ms:.4f} microseconds")
 
-    print(f"Minimum distance from start vertex to visit all cities and come back: {min_cost}")
+    print(
+        f"Minimum distance from start vertex to visit all cities and come back: {min_cost}"
+    )
     print(f"Best path: {best_path}")
-
 
     # ---------- Dynamic Programming ----------
     print(f"\n Dynamic Programming (Held-Karp)")

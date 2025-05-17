@@ -18,6 +18,7 @@ import heapq
 #  2   3
 # already a min heap : no need to heapify
 
+
 class SeatManager:
     def __init__(self, n: int):
         self.unres = [i for i in range(1, n + 1)]

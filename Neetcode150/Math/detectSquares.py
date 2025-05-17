@@ -1,11 +1,11 @@
 # https://leetcode.com/problems/detect-squares/
 """
-An axis-aligned square is a square whose edges are all the same length and 
+An axis-aligned square is a square whose edges are all the same length and
 are either parallel or perpendicular to the x-axis and y-axis.
 
 Trick for detecting squares/rectangle in a grid
 Count of occurrences matter : more count/duplicates : more squares. (hashmap)
-Trick: 
+Trick:
     Find diagonal point. How to verify if points are square by diagonal?
         height difference = width difference :: Diagonal : Form a square
     qx,qy and x,y :: if x, qy and qx, y are in hashmap : square can be formed and if multiple counts : multiple count by squares

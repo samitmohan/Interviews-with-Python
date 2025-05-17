@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/binary-tree-right-side-view/
 
-'''
+"""
 iterative bfs(queue FIFO), add prev level which doesn't have any nulls to the result;
 Time & Space : O(n)
 Level order traversal / BFS : for each level we want the right most node
@@ -11,7 +11,7 @@ Level order traversal / BFS : for each level we want the right most node
 queue : bfs (before popping take left and right child)
 ans : add rightmost values in queue to this
 
-'''
+"""
 
 
 class Solution:
@@ -47,5 +47,6 @@ class Solution:
                     right_side = node
                     q.append(node.left)
                     q.append(node.right)
-            if right_side: ans.append(right_side.val)
+            if right_side:
+                ans.append(right_side.val)
         return ans

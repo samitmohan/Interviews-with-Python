@@ -2,6 +2,7 @@
 # Use Trie + DFS
 # REVIST : Can't do.
 
+
 class Node:
     def __init__(self):
         self.children = {}
@@ -13,7 +14,6 @@ class Tries:
         self.root = Node()
 
     def insert(self, word):
-
         cur = self.root
         for c in word:
             if c in cur.children:
@@ -55,7 +55,12 @@ class Solution:
 
             for dr, dc in direction:
                 row, col = r + dr, c + dc
-                if row in RR and col in CC and (row, col) not in visited and board[row][col] in node.child:
+                if (
+                    row in RR
+                    and col in CC
+                    and (row, col) not in visited
+                    and board[row][col] in node.child
+                ):
                     visited.add((row, col))
                     backtracking(row, col, node.child[board[row][col]])
                     visited.remove((row, col))

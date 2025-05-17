@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/task-scheduler/
-'''
+"""
 AAABBCC
 Hashmap : {A : 3, B : 2, C : 2}
 n (waiting time) = 1
@@ -15,9 +15,10 @@ Count occurence of each task and pop and add to maxHeap : O(n)
 
 Time : n + time to process (1 second per task)
 Queue to add task and time
-'''
+"""
 
 import heapq
+
 # Time : O(n(log(n))) Space : O(n) (Counter takes nlogn)
 # Round Robin technique (queue needed for tasks which are waiting for cool down period)
 # Iterate till all the tasks are processed.
@@ -31,7 +32,8 @@ from collections import deque
 
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
-        if n == 0: return len(tasks)  # no waiting time
+        if n == 0:
+            return len(tasks)  # no waiting time
         hashmap = Counter(tasks)
         heap = [-val for val in hashmap.values()]
         heapq.heapify(heap)
@@ -47,9 +49,13 @@ class Solution:
                 frequency -= 1
                 # if task still left : put it in waiting queue and continue round robin
                 if frequency:
-                    queue.append([frequency, time_taken + n])  # enque task till it's cooldown period
+                    queue.append(
+                        [frequency, time_taken + n]
+                    )  # enque task till it's cooldown period
 
             # process tasks whose cooling period is expired (waiting queue tasks)
             while queue and queue[0][1] == time_taken:
-                heapq.heappush(heap, -queue.popleft()[0])  # only pop the frequncy (3 or 2 or 1 of letters)
+                heapq.heappush(
+                    heap, -queue.popleft()[0]
+                )  # only pop the frequncy (3 or 2 or 1 of letters)
         return time_taken

@@ -3,9 +3,10 @@
 # Output: 1
 # Explanation: [1,3] can be removed and the rest of the intervals are non-overlapping
 
+
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
-        # sort 
+        # sort
         intervals.sort()
         ans = 0
         prev_end = intervals[0][1]

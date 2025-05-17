@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/push-dominoes/description/
-'''
+"""
 Input: dominoes = ".L.R...LR..L.."
 if dominoes[i] == '.':
     if dominoes[i+1] == "L":
@@ -8,7 +8,7 @@ if dominoes[i] == '.':
     if dominoes[i-1] == "R":
         if dominoes[i+1] != "L":
             dominoes[i] == "R":
-    
+
  Pass 1: Left-to-Right (Simulating "R" forces)
     Whenever we see an 'R', we set force = N (maximum force).
     Then we reduce the force by 1 each step moving right (like a domino’s push weakening over distance).
@@ -26,7 +26,9 @@ At each domino position:
     If forces[i] == 0: equal pull → '.'
     If forces[i] > 0: stronger right pull → 'R'
     If forces[i] < 0: stronger left pull → 'L'
-'''
+"""
+
+
 class Solution:
     def pushDominoes(self, dominoes: str) -> str:
         forces = [0] * len(dominoes)
@@ -55,13 +57,13 @@ class Solution:
         result = []
         for f in forces:
             if f == 0:
-                result.append('.')
+                result.append(".")
             elif f > 0:
-                result.append('R')
+                result.append("R")
             else:
-                result.append('L')
-        return ''.join(result)
+                result.append("L")
+        return "".join(result)
 
 
 s = Solution()
-print(s.pushDominoes('.L.R...LR..L..'))
+print(s.pushDominoes(".L.R...LR..L.."))

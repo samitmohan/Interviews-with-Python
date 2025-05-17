@@ -2,6 +2,7 @@
 # length of palindrome = right - left + 1
 # T : O(n^2)
 
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         ans = ""
@@ -12,7 +13,7 @@ class Solution:
             # palindrome and in bounds
             while l >= 0 and r < len(s) and s[l] == s[r]:
                 if (r - l + 1) > ans_length:
-                    ans = s[l: r + 1]
+                    ans = s[l : r + 1]
                     ans_length = r - l + 1
                 l -= 1
                 r += 1
@@ -21,7 +22,7 @@ class Solution:
             l, r = i, i + 1
             while l >= 0 and r < len(s) and s[l] == s[r]:
                 if (r - l + 1) > ans_length:
-                    ans = s[l: r + 1]
+                    ans = s[l : r + 1]
                     ans_length = r - l + 1
                 l -= 1
                 r += 1
@@ -29,6 +30,7 @@ class Solution:
 
 
 # count number of palindromic strings
+
 
 def count_palindromic_substrings(s):
     count = 0
@@ -55,8 +57,8 @@ def count_palindromic_substrings(s):
     return count
 
 
-s = 'ABC'
+s = "ABC"
 print(count_palindromic_substrings(s))  # Output: 3
 
-s = 'AAA'
+s = "AAA"
 print(count_palindromic_substrings(s))  # Output: 6

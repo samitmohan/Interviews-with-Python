@@ -31,5 +31,9 @@ class Solution:
         for amt in range(1, amount + 1):
             for coin in coins:
                 if amt - coin >= 0:  # non negative : soln
-                    dp[amt] = min(dp[amt], 1 + dp[amt - coin])  # coin = 4, amt = 7. dp[7] = 1 + dp[3]
-        return dp[amount] if dp[amount] != float("inf") else -1  # return only when != default value
+                    dp[amt] = min(
+                        dp[amt], 1 + dp[amt - coin]
+                    )  # coin = 4, amt = 7. dp[7] = 1 + dp[3]
+        return (
+            dp[amount] if dp[amount] != float("inf") else -1
+        )  # return only when != default value

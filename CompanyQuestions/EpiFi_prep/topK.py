@@ -6,8 +6,8 @@ from collections import defaultdict
 
 class Solution(object):
     """
-     So once we've created our dictionary, we can turn it into a list correctly sorted - i.e. by decreasing frequencies,
-     and then by lexicographical order - and then return this list (sliced at index k to make sure we return only the k most frequent words)
+    So once we've created our dictionary, we can turn it into a list correctly sorted - i.e. by decreasing frequencies,
+    and then by lexicographical order - and then return this list (sliced at index k to make sure we return only the k most frequent words)
     """
 
     def topKFrequent(self, words, k):

@@ -2,6 +2,7 @@
 # Sort by start value
 # O(n(log(n)) : Sort
 
+
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort(key=lambda i: i[0])  # sort by start val

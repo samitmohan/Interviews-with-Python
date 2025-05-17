@@ -1,5 +1,6 @@
 # With and without using inbuilt methods.
 
+
 class Stack:
     def __init__(self) -> None:
         self.items = []
@@ -40,7 +41,9 @@ class StackScratch:
         if self.is_empty():
             raise Exception("Stack is empty")
         data = self.stack[self.top]
-        self.stack.pop(self.top)  # can do self.stack = self.stack[:self.top + 1] (without using pop)
+        self.stack.pop(
+            self.top
+        )  # can do self.stack = self.stack[:self.top + 1] (without using pop)
         self.top -= 1
         return data
 

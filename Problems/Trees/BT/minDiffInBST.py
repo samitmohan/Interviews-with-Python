@@ -12,7 +12,8 @@ class Solution:
         prev, ans = None, float("inf")
 
         def inorder(node):
-            if not node: return
+            if not node:
+                return
             inorder(node.left)
             nonlocal prev, ans  # in python : not global variables hence need to declare here
             # process root

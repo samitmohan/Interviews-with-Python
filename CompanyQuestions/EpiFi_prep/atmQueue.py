@@ -1,5 +1,6 @@
 # https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff48/00000000003f4ed8
 
+
 def atm_queue(T):
     for t in range(1, T + 1):
         N, X = map(int, input().split())

@@ -4,7 +4,7 @@
 Bruteforce : O(n^2)
 How to improve?
 [1, 2, 3] all positive
-1 * 2 * 3 
+1 * 2 * 3
 
 If we have positive numbers -> Product increasing (Easy)
 

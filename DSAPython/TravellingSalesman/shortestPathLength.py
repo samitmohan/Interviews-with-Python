@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/shortest-path-visiting-all-nodes/
 # (current_node = i, visited_mask = (1 << i), distance = 0
 
-'''
+"""
 Explanation of the Python Code:
 
     n = len(graph): Gets the number of nodes.
@@ -33,30 +33,34 @@ Explanation of the Python Code:
 
 This approach systematically explores all possible paths, leveraging BFS to find the shortest one, while using bitmasks to efficiently track the set of visited nodes in each path.
 
-'''
+"""
 
 from collections import deque
 
+
 def shortestPathLength(graph):
     n = len(graph)
-    if n == 0: return 0
-    if n == 1: return 0 # path len is 0 if only one node
+    if n == 0:
+        return 0
+    if n == 1:
+        return 0  # path len is 0 if only one node
     # target mask is when all bits are set to 1 -> 111
     targetMask = (1 << n) - 1
     q = deque()
     vis = set()
-    '''
+    """
     Initialise q -> for each starting node i
         initial mask has only ith bit set
         initial dist = 0
-    '''
+    """
     for i in range(n):
-        initMask = (1 << i)
+        initMask = 1 << i
         q.append((i, initMask, 0))
         vis.add((i, initMask))
     while q:
         currNode, mask, dist = q.popleft()
-        if mask == targetMask: return dist # visited all
+        if mask == targetMask:
+            return dist  # visited all
         # explore neigh
         for neigh in graph[currNode]:
             newMask = mask | (1 << neigh)
@@ -65,6 +69,9 @@ def shortestPathLength(graph):
                 q.append((neigh, newMask, dist + 1))
     return -1
 
+
 def main():
-    print(shortestPathLength(graph= [[1,2,3],[0],[0],[0]])) # 4
+    print(shortestPathLength(graph=[[1, 2, 3], [0], [0], [0]]))  # 4
+
+
 main()

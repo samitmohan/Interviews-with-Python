@@ -9,6 +9,7 @@
 # in the end : return True if stack empty else False
 # Time & Space : O(N)
 
+
 def isValid(s):
     stack = []
     close_matching = {")": "(", "}": "{", "]": "["}

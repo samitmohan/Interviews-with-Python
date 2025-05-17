@@ -27,14 +27,16 @@ class Solution:
         while True:
             slow = nums[slow]
             fast = nums[nums[fast]]
-            if slow == fast: break  # cycle detected
+            if slow == fast:
+                break  # cycle detected
 
         # Locate the start node of cycle (i.e., the duplicate number)
         slow2 = 0  # at same speed
         while True:
             slow = nums[slow]
             slow2 = nums[slow2]
-            if slow == slow2: return slow  # duplicate found
+            if slow == slow2:
+                return slow  # duplicate found
 
 
 # Cyclic Sort Solution : [1, N] :: index = value - 1

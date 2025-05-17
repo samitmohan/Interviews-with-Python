@@ -9,11 +9,13 @@ class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         left, right = 0, 0
         total = 0
-        ans = float('inf')  # if we dont find an array then return 0
+        ans = float("inf")  # if we dont find an array then return 0
 
         for right in range(len(nums)):
             total += nums[right]
-            while total >= target:  # answer found :: get size of window : (right - left + 1)
+            while (
+                total >= target
+            ):  # answer found :: get size of window : (right - left + 1)
                 ans = min(right - left + 1, ans)
                 # increment left pointer to find smaller window and also subtract deleted left pointer from total
                 total -= nums[left]

@@ -8,7 +8,7 @@ import os
 
 def fib(n):
     p, q = 0, 1
-    while (p < n):
+    while p < n:
         yield p
         p, q = q, p + q
 
@@ -36,7 +36,7 @@ class ArrayList:
         return self
 
     def __next__(self):
-        if (self.pos < len(self.numbers)):
+        if self.pos < len(self.numbers):
             self.pos += 1
             return self.numbers[self.pos - 1]
         else:
@@ -56,6 +56,7 @@ print("File removed")
 # Args
 # * : variable length, *ars : define to pass variable lenth arguments.
 
+
 def multiply(a, b, *argv):
     mul = a * b
     for num in argv:
@@ -71,7 +72,7 @@ print(multiply(1, 2, 3, 4, 5))  # 120
 
 def tellArguments(**kwargs):
     for k, v in kwargs.items():
-        print(f'{k} : {v}')
+        print(f"{k} : {v}")
 
 
 tellArguments(arg1="argument 1", arg2="argument 2")
@@ -94,9 +95,9 @@ class Parent(object):
 class Child(Parent):
     # Constructor
     def __init__(self, name, age):
-        '''
+        """
         In Python 3.x, we can also use super().__init__(name)
-        '''
+        """
         super(Child, self).__init__(name)
         self.age = age
 
@@ -129,6 +130,7 @@ class Employee:
 
     def display():
         print(self._emp_name + " " + self._age + " " + self.__branch)
+
 
 # Empty class
 

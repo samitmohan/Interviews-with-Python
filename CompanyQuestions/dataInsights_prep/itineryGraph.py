@@ -1,9 +1,9 @@
-class Solution():
+class Solution:
     # Solution class carries method for printing itinerary
     def __init__(self):
         pass
 
-    def printItinerary(self,d):
+    def printItinerary(self, d):
         # First step : create a reversed mapping. Here also for storing key value pairs dictionary is used.
         reverse_d = dict()
         for i in d:
@@ -12,19 +12,20 @@ class Solution():
         for i in reverse_d:
             if reverse_d[i] not in reverse_d:
                 starting_pt = reverse_d[i]
-                break;
-        #Third step : simply proceed one by one to print whole route. Assuming that there exist Starting point.
-        while(starting_pt in d):
-            print(starting_pt,"->",d[starting_pt],end=", ")
+                break
+        # Third step : simply proceed one by one to print whole route. Assuming that there exist Starting point.
+        while starting_pt in d:
+            print(starting_pt, "->", d[starting_pt], end=", ")
             starting_pt = d[starting_pt]
- 
-if __name__=="__main__":
+
+
+if __name__ == "__main__":
     d = dict()
     d["Chennai"] = "Banglore"
     d["Bombay"] = "Delhi"
     d["Goa"] = "Chennai"
     d["Delhi"] = "Goa"
- 
+
     # call for method that would print itinerary.
     obj = Solution()
     obj.printItinerary(d)

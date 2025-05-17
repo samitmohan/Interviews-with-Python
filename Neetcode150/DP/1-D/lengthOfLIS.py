@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/longest-increasing-subsequence/description/
 # O(n^2)
 
+
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         lis = [1] * len(nums)

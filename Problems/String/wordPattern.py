@@ -5,7 +5,9 @@
 # split and compare length of pattern and s (abba -> dog, cat, cat, dog)
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
-        s = s.split(' ')
+        s = s.split(" ")
         if len(pattern) != len(s):
             return False
-        return len(set(zip(pattern, s))) == len(set(s)) and len(set(s)) == len(set(pattern))
+        return len(set(zip(pattern, s))) == len(set(s)) and len(set(s)) == len(
+            set(pattern)
+        )

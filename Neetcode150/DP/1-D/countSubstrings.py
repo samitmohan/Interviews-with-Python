@@ -11,7 +11,7 @@ aa : palindrome
 b aa b : palindrome
 b aa c : inside is a palindrome but expanding outwards : not a palindrome.
 
-Each character is a subtring also, 'abc' : a, b, c 
+Each character is a subtring also, 'abc' : a, b, c
 
 Optimised : O(n^2)
     a a a
@@ -26,7 +26,7 @@ This way we're cutting down on repeated work of checking every char for palindro
 "aaab"
 L and R both at a.
     ans += 1 # L == R
-L is out of bounds 
+L is out of bounds
 
 a a a b
   LR
@@ -39,7 +39,7 @@ L   R
 This way we'll only get palindromes of odd length
 For even length : start at every even position. (Righter pointer = L + 1)
 a a a b
-L R 
+L R
 
 a a a b
   L R

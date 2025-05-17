@@ -10,6 +10,7 @@
 # If it is an end point then we check all of its corresponding start points and get the maximum fare we can earn .
 # In order to quickly check if this number is an end point or not maintain a hashmap where keys="end point" and the values="[start_point, tip]""
 
+
 class Solution:
     def maxTaxiEarnings(self, n, rides):
         """
@@ -18,6 +19,7 @@ class Solution:
         :rtype: int
         """
         import collections
+
         hashmap = collections.defaultdict(list)
         for start, end, tip in rides:
             hashmap[end].append((start, tip))
@@ -32,7 +34,8 @@ class Solution:
                 # for each ending trip at the current 'location'
                 for start, tip in hashmap[location]:
                     profitDroppingPassengersHere = max(
-                        profitDroppingPassengersHere, location - start + tip + dp[start])
+                        profitDroppingPassengersHere, location - start + tip + dp[start]
+                    )
                 # update the dp
                 dp[location] = max(dp[location], profitDroppingPassengersHere)
 

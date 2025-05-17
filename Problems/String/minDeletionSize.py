@@ -9,6 +9,7 @@
 # c,a,e -> not sorted
 # ans = 1
 
+
 def minDelete(s):
     a = list(zip(*s))
     count = 0

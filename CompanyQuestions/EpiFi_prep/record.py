@@ -20,8 +20,8 @@ def get_min_record(target, record):
     return min_record
 
 
-records = [{'a': 1, 'b': 3}, {'a': 3}, {'a': 4, 'c': -5}]
-target = 'a'
+records = [{"a": 1, "b": 3}, {"a": 3}, {"a": 4, "c": -5}]
+target = "a"
 
 min_record = get_min_record(target, records)
 print(min_record)  # Output: {'a':1,'b':3}
@@ -38,15 +38,15 @@ If a record doesn't contain the target assume the value to be 0 in that particul
 
 def get_extreme_record(target, param, records):
     extreme_record = None
-    extreme_val = float('inf') if param == 'asc' else float('-inf')
+    extreme_val = float("inf") if param == "asc" else float("-inf")
 
     for record in records:
         val = record.get(target, 0)
-        if param == 'asc':
+        if param == "asc":
             if val < extreme_val:
                 extreme_record = record
                 extreme_val = value
-        elif param == 'dsc':
+        elif param == "dsc":
             if val > extreme_val:
                 extreme_record = record
                 extreme_val = value

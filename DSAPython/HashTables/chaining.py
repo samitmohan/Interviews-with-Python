@@ -2,7 +2,7 @@
 
 # handling collisions -> probing (open addressing) and chaining (closed addressing (in place)
 # probing : changing the position of they key to next empty slot available
-# chaining : forming linked list / tree for chaining of collisions 
+# chaining : forming linked list / tree for chaining of collisions
 # if chain too long -> O(N) complexity : to fix : rehash -> typically double the size of the array and rehash it.
 # chaining is done via linkedlist O(N) or tree O(logN)
 # be on the same index and go down and attach to the linked list
@@ -10,6 +10,7 @@
 # We're making an array of linked lists (buckets) : each item in array is of type linked list.
 
 # creating linked list class
+
 
 class Node:
     def __init__(self, key, value):
@@ -103,6 +104,7 @@ class LL:
 # old bucket -> rehash and add it to new bucket of new capacity
 # capacity changed so hash_function also changed -> balances things out
 
+
 class Dictionary:
     def __init__(self, capacity):
         self.capacity = capacity  # number of items in array
@@ -113,7 +115,9 @@ class Dictionary:
     def make_array(self, capacity):
         L = []
         for i in range(capacity):
-            L.append(LL())  # inside L there will exists n number of linked list class (n = capacity)
+            L.append(
+                LL()
+            )  # inside L there will exists n number of linked list class (n = capacity)
         return L
 
     def get(self, key):
@@ -137,16 +141,19 @@ class Dictionary:
 
         if node_index == -1:  # new fresh node
             # insert
-            self.buckets[bucket_index].add(key,
-                                           value)  # in the array of linked list : goto that index/element_made_of_LL where insert and add key value pair
+            self.buckets[bucket_index].add(
+                key, value
+            )  # in the array of linked list : goto that index/element_made_of_LL where insert and add key value pair
             self.size += 1
 
             load_factor = self.size / self.capacity
-            if (load_factor >= 2):  # more than lf
+            if load_factor >= 2:  # more than lf
                 self.rehash()
         else:
             # update
-            node = self.buckets[bucket_index].get_node_at_index(node_index)  # get the updated node (K, V)
+            node = self.buckets[bucket_index].get_node_at_index(
+                node_index
+            )  # get the updated node (K, V)
             node.value = value  # update
 
     def rehash(self):
@@ -194,8 +201,8 @@ class Dictionary:
 d1 = Dictionary(4)
 d1.put("python", 1)
 d1["java"]  # not present
-d1.put('java', 2)
-d1.put('c++', 34)
-d1['matlab'] = 334
+d1.put("java", 2)
+d1.put("c++", 34)
+d1["matlab"] = 334
 print(d1)
 print(len(d1))

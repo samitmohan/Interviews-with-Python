@@ -2,24 +2,40 @@
 
 import time
 
+
 def naiveexp(base, p):
     res = 1
     for _ in range(p):
         res *= base
     return res
 
+
 def fastexp(base, p):
-    if p == 0: return 1
-    if p == 1: return base
+    if p == 0:
+        return 1
+    if p == 1:
+        return base
     else:
-        r = fastexp(base, p//2)
+        r = fastexp(base, p // 2)
         if p % 2 == 0:
-            return r * r # even
+            return r * r  # even
         else:
-            return r * base * r # odd
+            return r * base * r  # odd
+
 
 if __name__ == "__main__":
-    powers_to_test = [10, 100, 1_000, 10_000, 50_000, 100_000, 200_000, 300_000, 400_000, 500_000]
+    powers_to_test = [
+        10,
+        100,
+        1_000,
+        10_000,
+        50_000,
+        100_000,
+        200_000,
+        300_000,
+        400_000,
+        500_000,
+    ]
     base = 2
 
     print("power\tnaive_time (s)\tfast_time (s)")
@@ -37,7 +53,7 @@ if __name__ == "__main__":
 
         print(f"{p}\t{naive_time:.6f}\t\t{fast_time:.6f}")
 
-'''
+"""
 Results-:
 power   naive_time (s)  fast_time (s)
 10      0.000002                0.000002
@@ -60,5 +76,4 @@ def fast_exp_iter(base, power):
         base *= base
         power //= 2
     return result
-'''
-
+"""

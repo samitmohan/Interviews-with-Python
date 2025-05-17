@@ -2,15 +2,16 @@
 # [1->2->3->4] :: split into middle :: [1->2] and [3->4] :: reverse second half
 # [1->2] and [4->3] now point 1 to 4 and 2 to 3 :: [1->4->2->3]
 
-# 3 parts: 
+# 3 parts:
 # fast and slow pointer to find middle of list
 # reverse linked list
 # merge
 
+
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         """
-          Do not return anything, modify head in-place instead.
+        Do not return anything, modify head in-place instead.
         """
         # find middle
         slow, fast = head, head.next
@@ -21,7 +22,9 @@ class Solution:
         # slow is at middle : reverse linked list [3->4 to 4->3]
         # second = 3 : curr
         second = slow.next  # first element of second half of the list
-        prev = slow.next = None  # slow.next = None because we don't want 2->3 :: break link between two sublists [1->2] and [3->4]
+        prev = slow.next = (
+            None  # slow.next = None because we don't want 2->3 :: break link between two sublists [1->2] and [3->4]
+        )
         while second:
             temp = second.next
             second.next = prev

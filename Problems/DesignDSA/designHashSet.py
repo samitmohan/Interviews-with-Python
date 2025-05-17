@@ -6,9 +6,8 @@ class ListNode:
 
 
 class MyHashSet:
-
     def __init__(self):
-        self.set = [ListNode(0) for i in range(10 ** 4)]  # dummy node
+        self.set = [ListNode(0) for i in range(10**4)]  # dummy node
 
     def add(self, key: int) -> None:
         # index = key % len(self.set)

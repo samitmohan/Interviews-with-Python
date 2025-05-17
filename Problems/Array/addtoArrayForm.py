@@ -6,7 +6,7 @@ def addToArrayForm(nums, k):
     s += k  # add number 34 : 3421
     # convert to list
     lst = []
-    while (s != 0):
+    while s != 0:
         lst.append(s % 10)
         s //= 10
     return lst[::-1]  # in reverse

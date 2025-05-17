@@ -21,6 +21,7 @@
 
 # FIXED SIZE SLIDING WINDOW : always size k
 
+
 def fixed_sw(arr, k):
     # sum up first subarray and add it to result
     current_subarray = sum(arr[:k])
@@ -45,8 +46,9 @@ def fixed_sw(arr, k):
 # allows us to start small (size = 1) and expand until we match our condition
 # once subarray found with sum, contract the first half to find minimal size subarray
 
+
 def dynamic_sw(arr, x):
-    minlength = float('inf')
+    minlength = float("inf")
     start, end, curr_sum = 0, 0, 0  # current range and sum of our sliding window
     # extend sliding window until criteria is met
     while end < len(arr):
@@ -59,6 +61,7 @@ def dynamic_sw(arr, x):
 
             minlength = min(minlength, end - start + 1)
     return minlength
+
 
 # Problems -> Problems section
 # Most likely : use hashmaps with sliding window problems

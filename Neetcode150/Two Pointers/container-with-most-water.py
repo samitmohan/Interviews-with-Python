@@ -6,12 +6,12 @@
 
 # TC -> O(N)
 
-'''
+"""
 Documentation : Two Pointer
-  ans = Total water contained in an interval = width * height 
+  ans = Total water contained in an interval = width * height
   distance = high - low (width)
   height =  min(arr[low], arr[high])
-'''
+"""
 
 
 class Solution:
@@ -19,7 +19,7 @@ class Solution:
         low = 0
         high = len(height) - 1
         ans = 0
-        while (low < high):
+        while low < high:
             ans = max(ans, min(height[low], height[high]) * (high - low))
             if height[low] < height[high]:
                 low += 1

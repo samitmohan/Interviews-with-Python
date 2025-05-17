@@ -25,4 +25,4 @@ class Solution:
         # 3
         node.next = temp.next
         temp.next = None
-        del (temp)  # good practice
+        del temp  # good practice

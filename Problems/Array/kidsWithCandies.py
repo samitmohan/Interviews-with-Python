@@ -3,7 +3,7 @@
 # O(N)
 class Solution:
     def kidsWithCandies(candies, extraCandies):
-        maxi = float('-inf')  # current maxi
+        maxi = float("-inf")  # current maxi
         for i in range(len(candies)):
             if candies[i] > maxi:
                 maxi = candies[i]
@@ -15,6 +15,7 @@ class Solution:
             else:
                 ans.append(False)
         return ans
+
 
 # One Liner
 

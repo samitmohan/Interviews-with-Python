@@ -11,6 +11,7 @@ We removed it from the stack if it had no adjacent nodes.
 With every node added to the stack, we repeat the above steps or recursively visit each node until we reach the dead end.
 """
 
+
 # How to use in LC questions
 class Solution:
     def dfs(root):
@@ -23,7 +24,9 @@ class Solution:
             if curr.left:
                 stack.append(curr.left)
 
+
 # General DFS
+
 
 def dfs(graph, start, visited=None):
     if visited is None:
@@ -36,21 +39,9 @@ def dfs(graph, start, visited=None):
             dfs(graph, neighbor, visited)
 
 
-graph = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['F'],
-    'D': [],
-    'E': ['F'],
-    'F': []
-}
-dfs(graph, 'A')
+graph = {"A": ["B", "C"], "B": ["D", "E"], "C": ["F"], "D": [], "E": ["F"], "F": []}
+dfs(graph, "A")
 # this will return the sequence of A,B,D,E,F,C
 
-graph2 = {
-    0: [1, 2],
-    1: [2],
-    2: [0, 3],
-    3: [3]
-}
+graph2 = {0: [1, 2], 1: [2], 2: [0, 3], 3: [3]}
 dfs(graph2, 2)  # 2 0 1 3

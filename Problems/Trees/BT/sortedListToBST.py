@@ -17,8 +17,10 @@
 #         self.right = right
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
-        if not head: return None
-        if not head.next: return TreeNode(head.val)
+        if not head:
+            return None
+        if not head.next:
+            return TreeNode(head.val)
         mid = self.getMid(head)
         root = TreeNode(mid.val)
         root.right = self.sortedListToBST(mid.next)

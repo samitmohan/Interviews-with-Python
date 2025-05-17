@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/jump-game/description/
 
 """
-DP / Greedy 
+DP / Greedy
 O(n)
 Reverse order
 [2,3,1,1,4] (start from end and see if you can reach first)
@@ -25,6 +25,7 @@ Shift goal : 3
 # print(i) # 4 3 2 1 0
 # print(nums[i]) # [4, 1, 1, 3, 2]
 # i + nums[i] (jump length) >= goal
+
 
 class Solution:
     def canJump(nums):

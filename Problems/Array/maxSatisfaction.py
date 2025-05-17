@@ -34,6 +34,7 @@ class Solution:
         ans, prefix_sum = 0, 0
         for i in range(len(satisfaction)):
             prefix_sum += satisfaction[i]
-            if prefix_sum < 0: break
+            if prefix_sum < 0:
+                break
             ans += prefix_sum
         return ans

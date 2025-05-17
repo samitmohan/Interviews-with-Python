@@ -11,8 +11,10 @@ class Solution:
 
         # cows
         for c in set(secret):  # count : occurences in string
-            cows += min(secret.count(c), guess.count(c))  # will return min count of all same numbers (1 1 1 1 -> 4)
+            cows += min(
+                secret.count(c), guess.count(c)
+            )  # will return min count of all same numbers (1 1 1 1 -> 4)
             # subtract this from bulls to get actual cows (4 - 1 : 3)
 
         # ans
-        return str(bulls) + 'A' + str(cows - bulls) + 'B'  # 1A3B
+        return str(bulls) + "A" + str(cows - bulls) + "B"  # 1A3B

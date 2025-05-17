@@ -24,7 +24,10 @@ class MyQueue:
         # if out stack empty and in stack not empty -> place in stack elements in out stack
         if not self.out_stack:
             while self.in_stack:
-                self.out_stack.append(self.in_stack.pop())  # place in out stack and pop elemnts from in stack
+                self.out_stack.append(
+                    self.in_stack.pop()
+                )  # place in out stack and pop elemnts from in stack
+
 
 # queue -> fifo -> push -> adds to starting of list
 # peek -> returns list[0]

@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/3sum-closest/description/
 
+
 def threeSumClosest(nums, target):
     nums.sort()
     result = nums[0] + nums[1] + nums[2]

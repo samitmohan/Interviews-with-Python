@@ -1,4 +1,5 @@
 import jovian.pythondsa
+
 # https://leetcode.com/problems/search-in-rotated-sorted-array/
 """
 In this code, we use a modified version of the binary search algorithm to find the target element in array
@@ -44,33 +45,11 @@ def search(nums, target):
 
 tests = []
 
-test = {
-    'input': {
-        'nums': [4, 5, 6, 7, 0, 1, 2],
-        'target': 0
-    },
-    'output': 4
-}
+test = {"input": {"nums": [4, 5, 6, 7, 0, 1, 2], "target": 0}, "output": 4}
 tests.append(test)
 
-tests.append(
-    {
-        'input': {
-            'nums': [4, 5, 6, 7, 0, 1, 2],
-            'target': 3
-        },
-        'output': -1
-    }
-)
+tests.append({"input": {"nums": [4, 5, 6, 7, 0, 1, 2], "target": 3}, "output": -1})
 
-tests.append(
-    {
-        'input': {
-            'nums': [3, 1],
-            'target': 1
-        },
-        'output': 1
-    }
-)
+tests.append({"input": {"nums": [3, 1], "target": 1}, "output": 1})
 
 print(jovian.pythondsa.evaluate_test_cases(search, tests))

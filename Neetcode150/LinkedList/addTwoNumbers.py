@@ -1,13 +1,13 @@
 # https://leetcode.com/problems/add-two-numbers/description/
-'''
+"""
 Reverse order : add numbers from one's place : convinient.
 Have a carry integer
-Edge Case : if 564 + 3422 : assume in the it's a 0 (5640) 
+Edge Case : if 564 + 3422 : assume in the it's a 0 (5640)
 Edge Case : if carry exists and no numbers to carry that carry : just add carry to result : 7 and 8 = 5 -> 1 (add carry to result)
 
 Dummy LL : new linkedlist where answers are saved
 
-'''
+"""
 
 
 # Definition for singly-linked list.
@@ -18,7 +18,9 @@ class ListNode:
 
 
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         dummy = ListNode()
         current = dummy  # points to first element in new list
         carry = 0

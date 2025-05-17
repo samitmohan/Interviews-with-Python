@@ -1,9 +1,9 @@
 # https://leetcode.com/problems/design-circular-queue/description/
-'''
+"""
 (index + 1) % size = newIndex
 [1,2,3,4,5]
 4 + 1 % 5 = 0 : put new element in the beginning
-'''
+"""
 
 
 class MyCircularQueue:
@@ -54,6 +54,7 @@ class MyCircularQueue:
 
     def isFull(self) -> bool:
         return self.size == self.max_size
+
 
 # Your MyCircularQueue object will be instantiated and called as such:
 # obj = MyCircularQueue(k)

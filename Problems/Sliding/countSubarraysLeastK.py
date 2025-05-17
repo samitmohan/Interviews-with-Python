@@ -7,13 +7,13 @@ class Solution:
         # now its just sliding window
         left = 0
         ans = 0
-        count = 0 
+        count = 0
         for right in range(len(nums)):
             if nums[right] == max_num:
                 count += 1
             while count >= k:
                 ans += len(nums) - right
-                if nums[left] == max_num: 
+                if nums[left] == max_num:
                     count -= 1
                 left += 1
         return ans

@@ -9,7 +9,9 @@ class PQ:
         self._index = 0
 
     def push(self, item, priority):
-        heapq.heappush(self._queue, (-priority, self._index, item))  # min heap : - max heap
+        heapq.heappush(
+            self._queue, (-priority, self._index, item)
+        )  # min heap : - max heap
         self._index += 1
 
     def pop(self):
@@ -20,15 +22,16 @@ class PQ:
 
 
 q = PQ()
-q.push('task 1', 3)
-q.push('task 2', 1)
-q.push('task 3', 2)
+q.push("task 1", 3)
+q.push("task 2", 1)
+q.push("task 3", 2)
 
 while not q.is_empty():
     print(q.pop())
 
 
 # Without using heap (using array : O(N))
+
 
 class PriorityQueue:
     def __init__(self) -> None:

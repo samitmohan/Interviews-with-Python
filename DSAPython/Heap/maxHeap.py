@@ -1,5 +1,5 @@
 """
-Note that the only difference between this implementation and the MinHeap implementation I provided earlier is in the _sift_up() and _sift_down() methods. 
+Note that the only difference between this implementation and the MinHeap implementation I provided earlier is in the _sift_up() and _sift_down() methods.
 In the MaxHeap implementation, _sift_up() swaps an element with its parent if the parent is smaller than the element
 while _sift_down() swaps an element with its larger child (if there is one).
 """

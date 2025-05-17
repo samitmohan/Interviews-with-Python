@@ -1,4 +1,4 @@
-'''
+"""
 https://leetcode.com/problems/count-subarrays-with-score-less-than-k/?envType=daily-question&envId=2025-04-28
 Since constraints are large, can't use 2 ptr/sliding window
 Best strategy would be to use a hashmap and precompute.
@@ -42,17 +42,18 @@ for right in range(len(nums)) - 1:
         left += 1
     return ans
 Actually we don't even need a hashmap
-'''
+"""
+
+
 class Solution:
     def countSubarrays(self, nums: List[int], k: int) -> int:
         left, ans = 0, 0
         total = 0
         for right in range(len(nums)):
             total += nums[right]
-            
+
             while total * (right - left + 1) >= k:
                 total -= nums[left]
                 left += 1
             ans += right - left + 1
         return ans
-        

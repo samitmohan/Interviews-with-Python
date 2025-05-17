@@ -4,6 +4,7 @@
 # https://leetcode.com/problems/design-add-and-search-words-data-structure/
 # Explanation : https://www.youtube.com/watch?v=BTf05gs_8iU
 
+
 class TrieNode:
     def __init__(self) -> None:
         self.children = {}  # can have 26 children :: # a : TrieNode
@@ -31,11 +32,14 @@ class WordDictionary:
                 char = word[i]
                 if char == ".":
                     for child in curr.children.values():  # hashmap values : children
-                        if dfs(i + 1, child):  # if next found .ab : a and b found : return True
+                        if dfs(
+                            i + 1, child
+                        ):  # if next found .ab : a and b found : return True
                             return True
                     return False
                 else:  # normal character
-                    if char not in curr.children: return False
+                    if char not in curr.children:
+                        return False
                     curr = curr.children[char]
             return curr.end_of_word  # true or false
 

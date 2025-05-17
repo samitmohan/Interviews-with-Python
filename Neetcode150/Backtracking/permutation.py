@@ -7,7 +7,7 @@ thing so it makes the array not changeable.."""
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         def helper(left, right, ans):
-            if (left == right):  # base case
+            if left == right:  # base case
                 ans.append(nums.copy())
                 return
             # recursive case : swap

@@ -9,7 +9,7 @@ def countingSort(arr, exp1):
 
     # Store count of occurrences in count[]
     for i in range(0, n):
-        index = (arr[i] / exp1)
+        index = arr[i] / exp1
         count[int((index) % 10)] += 1
 
     # Change count[i] so that count[i] now contains actual
@@ -20,7 +20,7 @@ def countingSort(arr, exp1):
     # Build the output array
     i = n - 1
     while i >= 0:
-        index = (arr[i] / exp1)
+        index = arr[i] / exp1
         output[count[int((index) % 10)] - 1] = arr[i]
         count[int((index) % 10)] -= 1
         i -= 1

@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/house-robber-ii/description/
 # Time : O(n)
 
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
         # edge cases : skip first and last house

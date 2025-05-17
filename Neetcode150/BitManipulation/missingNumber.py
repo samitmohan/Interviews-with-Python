@@ -57,7 +57,9 @@ class Solution:
         i = 0
         while i < len(arr):
             correct_index = arr[i]  # index = value
-            if arr[i] < len(arr) and arr[i] != arr[correct_index]:  # edge case added (case 2)
+            if (
+                arr[i] < len(arr) and arr[i] != arr[correct_index]
+            ):  # edge case added (case 2)
                 arr[i], arr[correct_index] = arr[correct_index], arr[i]
             else:
                 i += 1

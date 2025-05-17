@@ -5,12 +5,14 @@ memo = {}  # dp
 
 
 def knapsack(maxcap, weight, value, n):
-    if n == 0 or maxcap == 0: return 0
+    if n == 0 or maxcap == 0:
+        return 0
     # if weight of nth item is more than weight avail = skip it
-    if (weight[n - 1] > maxcap):
+    if weight[n - 1] > maxcap:
         return knapsack(maxcap, weight, value, n - 1)
     # if answer already present in memo return it
-    if (maxcap, n) in memo: return memo[(maxcap, n)]
+    if (maxcap, n) in memo:
+        return memo[(maxcap, n)]
 
     # value if nth item picked
     valPicked = value[n - 1] + knapsack(maxcap - weight[n - 1], weight, value, n - 1)

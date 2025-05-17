@@ -10,12 +10,12 @@ class Deque:
 
     def pop_front(self):
         if self.is_empty():
-            raise IndexError('Cannot pop from an empty deque')
+            raise IndexError("Cannot pop from an empty deque")
         return self._deque.pop(0)
 
     def pop_back(self):
         if self.is_empty():
-            raise IndexError('Cannot pop from an empty deque')
+            raise IndexError("Cannot pop from an empty deque")
         return self._deque.pop()
 
     def is_empty(self):
@@ -23,6 +23,7 @@ class Deque:
 
 
 # From scratch
+
 
 class DequeNode:
     def __init__(self, value):
@@ -90,9 +91,9 @@ class DequeScratch:
 
 
 d = Deque()
-d.push_front('a')
-d.push_back('b')
-d.push_front('c')
-d.push_back('d')
+d.push_front("a")
+d.push_back("b")
+d.push_front("c")
+d.push_back("d")
 while not d.is_empty():
     print(d.pop_front(), d.pop_back())

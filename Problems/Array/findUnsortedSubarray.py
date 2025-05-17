@@ -1,6 +1,6 @@
 def unsorted(nums):
-    mn = float('inf')
-    mx = -float('inf')
+    mn = float("inf")
+    mx = -float("inf")
     start = end = flag = 1
 
     for i in range(1, len(nums)):
@@ -9,7 +9,8 @@ def unsorted(nums):
             mn = min(mn, nums[i])
             mx = max(mx, nums[i - 1])
 
-    if flag == 0: return 0
+    if flag == 0:
+        return 0
     for i in range(len(nums)):
         if nums[i] > mn:
             start = i

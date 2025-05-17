@@ -16,11 +16,15 @@ class Solution:
                 # now we have dictionary with key(number) value(freq) pairs
         # sort the list based on values (highest first) -> return first k elements.
         answer = sorted(hashmap, key=hashmap.get, reverse=True)[
-                 :k]  # sorting in reverse order and getting the keys, sliced for k times.
+            :k
+        ]  # sorting in reverse order and getting the keys, sliced for k times.
         return answer
+
 
 # O(nlogk)
 class Solution:
     def topKFrequent(self, nums, k):
         count = Counter(nums)  # O(n)
-        return [ item for item, _ in heapq.nlargest(k, count.items(), key=lambda x: x[1]) ]
+        return [
+            item for item, _ in heapq.nlargest(k, count.items(), key=lambda x: x[1])
+        ]

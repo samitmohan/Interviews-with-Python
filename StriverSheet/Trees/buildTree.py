@@ -38,14 +38,15 @@ inorder_index_hm = {v:i for i, v in enumerate(inorder)}
 
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
-        if not inorder: return None  # can still work if just PO given : root
+        if not inorder:
+            return None  # can still work if just PO given : root
         root_val = postorder.pop()
         root = TreeNode(root_val)  # root will always be of PO
         # find index of root in IO (elements left to this : left ST and right to this : right ST)
         root_index = inorder.index(root_val)
 
         # recursively building tree
-        root.right = self.buildTree(inorder[root_index + 1:], postorder)
-        root.left = self.buildTree(inorder[: root_index], postorder)
+        root.right = self.buildTree(inorder[root_index + 1 :], postorder)
+        root.left = self.buildTree(inorder[:root_index], postorder)
 
         return root

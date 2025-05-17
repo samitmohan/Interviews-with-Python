@@ -1,5 +1,5 @@
 def bestSumDownwardTreePath(parent, values):
-    bestPath = float('-inf')
+    bestPath = float("-inf")
     n = len(parent)
 
     if n == 1:

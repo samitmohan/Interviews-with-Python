@@ -5,26 +5,31 @@
 #  and two seconds for the next, alternating between the two -> keep parity
 from collections import defaultdict
 import heapq
+
 # bfs + min_heap
-'''
+"""
 moveTime = [[0,4],[4,4]]
 Output 5 Expected 6
-'''
+"""
 from heapq import heappush, heappop
+
+
 def minTimeToReach(moveTime):
     num_rows = len(moveTime)
     num_cols = len(moveTime[0])
     dirns = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-    inf = float('inf')
-    cache = [[inf] * num_cols for _ in range(num_rows)] # answer array
+    inf = float("inf")
+    cache = [[inf] * num_cols for _ in range(num_rows)]  # answer array
     cache[0][0] = 0
     heap = []
-    heappush(heap, (0, 0, 0)) # current_time, row, col
+    heappush(heap, (0, 0, 0))  # current_time, row, col
     while heap:
-        currTime, row, col = heappop(heap) # get the current cost row col
+        currTime, row, col = heappop(heap)  # get the current cost row col
         # now need to check boundaries
-        if row == num_rows - 1 and col == num_cols - 1: return currTime
-        if currTime > cache[row][col]: continue
+        if row == num_rows - 1 and col == num_cols - 1:
+            return currTime
+        if currTime > cache[row][col]:
+            continue
 
         for dr, dc in dirns:
             new_row = row + dr
@@ -35,53 +40,54 @@ def minTimeToReach(moveTime):
                     cache[new_row][new_col] = next_time
                     heappush(heap, (next_time, new_row, new_col))
     return -1
-        
 
-'''
+
+"""
 Now for next problem -> Can move 1 step or 2 step dependening on parity.
 move 1 = 1 
 move 2 = 2
 move 3 = 1
 # need to add parity bit in heap
 move_duration = 1 if parity % 2 != 0 else 2
-'''
+"""
+
 
 def minTimeToReach2(moveTime):
     nr, nc = len(moveTime), len(moveTime[0])
     dirns = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-    inf = float('inf')
-    cache = [[inf] * nc for _ in range(nr)] # answer array
+    inf = float("inf")
+    cache = [[inf] * nc for _ in range(nr)]  # answer array
     cache[0][0] = 0
     mh = []
-    heappush(mh, (0, 0, 0, 0)) # currtime, row, col, parity
+    heappush(mh, (0, 0, 0, 0))  # currtime, row, col, parity
     while mh:
         currTime, row, col, parity = heappop(mh)
-        if row == nr - 1 and col == nc - 1: return currTime
-        if currTime > cache[row][col]: continue
+        if row == nr - 1 and col == nc - 1:
+            return currTime
+        if currTime > cache[row][col]:
+            continue
         for dr, dc in dirns:
             new_row = row + dr
             new_col = col + dc
-            if 0 <= new_row < nr and 0 <= new_col < nc: # in boundary
+            if 0 <= new_row < nr and 0 <= new_col < nc:  # in boundary
                 moveDuration = 1 if parity == 0 else 2
                 nextTime = max(currTime, moveTime[new_row][new_col]) + moveDuration
                 if nextTime < cache[new_row][new_col]:
-                    cache[new_row][new_col] = nextTime # djkstra
-                    new_parity = 1 - parity 
+                    cache[new_row][new_col] = nextTime  # djkstra
+                    new_parity = 1 - parity
                     heappush(mh, (nextTime, new_row, new_col, new_parity))
     return -1
 
 
-
 def main():
-    print(minTimeToReach(moveTime=[[0,4],[4,4]])) # 6
-    print(minTimeToReach2( moveTime = [[0,4],[4,4]])) # 7
+    print(minTimeToReach(moveTime=[[0, 4], [4, 4]]))  # 6
+    print(minTimeToReach2(moveTime=[[0, 4], [4, 4]]))  # 7
+
+
 main()
 
-            
-        
 
-
-'''
+"""
 notes
 
 You're in the top-left room of a grid, and you want to reach the bottom-right room as fast as possible.
@@ -131,4 +137,4 @@ minheap = (0,0,0) {row, col, time}
 curr time = max(curr_time, nextlocation) + 1
 TC : O((nm)lognm) nm due to min heap
 
-'''
+"""

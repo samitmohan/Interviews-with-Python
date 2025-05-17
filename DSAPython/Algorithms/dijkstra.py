@@ -3,30 +3,39 @@ from collections import defaultdict
 
 # Find shortest path from start node to all other nodes with non negative weights.
 
-def dijkstra(graph, start):
-    dist = defaultdict(lambda: float('inf'))
-    dist[start] = 0
-    vis = set() # to keep track of visited nodes
-    heap = []
-    heappush(heap, (0, start)) # push 0, 'A' -> distance to A is 0 from 0
 
-    #Go through all neighbors of currNode.
+def dijkstra(graph, start):
+    dist = defaultdict(lambda: float("inf"))
+    dist[start] = 0
+    vis = set()  # to keep track of visited nodes
+    heap = []
+    heappush(heap, (0, start))  # push 0, 'A' -> distance to A is 0 from 0
+
+    # Go through all neighbors of currNode.
     while heap:
         distance, currNode = heappop(heap)
-        if currNode in vis: continue
-        vis.add(currNode) # Pick the node with the smallest tentative distance, mark it.
+        if currNode in vis:
+            continue
+        vis.add(
+            currNode
+        )  # Pick the node with the smallest tentative distance, mark it.
         # neighbour check
         for neighbor, wt in graph[currNode].items():
-            if neighbor in vis: continue
-            newDist = distance + wt # distance from the start node to that neighbor via currNode.
+            if neighbor in vis:
+                continue
+            newDist = (
+                distance + wt
+            )  # distance from the start node to that neighbor via currNode.
             if newDist < dist[neighbor]:
                 dist[neighbor] = newDist
-                heappush(heap, (newDist, neighbor)) # 1,B or 4, C
+                heappush(heap, (newDist, neighbor))  # 1,B or 4, C
     return dist
 
-'''
+
+"""
 Better with class
-'''
+"""
+
 
 class Graph:
     def __init__(self, graph: dict = {}):
@@ -38,7 +47,7 @@ class Graph:
         self.graph[node1][node2] = weight
 
     def shortest_distances(self, source: str):
-        dist = defaultdict(lambda: float('inf'))
+        dist = defaultdict(lambda: float("inf"))
         dist[source] = 0
         vis = set()
         heap = [(0, source)]
@@ -56,6 +65,7 @@ class Graph:
                     dist[neighbor] = newDist
                     heappush(heap, (newDist, neighbor))
         return dist
+
 
 graph = {
     "A": {"B": 3, "C": 3},

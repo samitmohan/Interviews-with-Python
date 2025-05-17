@@ -19,9 +19,7 @@ class Solution:
 
         def dfs(r, c, prev_val):
             # out of bounds
-            if (r < 0 or r == rows or
-                    c < 0 or c == cols or
-                    matrix[r][c] <= prev_val):
+            if r < 0 or r == rows or c < 0 or c == cols or matrix[r][c] <= prev_val:
                 return 0
 
             if (r, c) in dp:
@@ -39,5 +37,7 @@ class Solution:
 
         for r in range(rows):
             for c in range(cols):
-                dfs(r, c, -1)  # default val : -1 [never eval true : none of the values in matrix will be < -1]
+                dfs(
+                    r, c, -1
+                )  # default val : -1 [never eval true : none of the values in matrix will be < -1]
         return max(dp.values())

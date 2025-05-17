@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/sliding-window-maximum/
-'''
+"""
 Draw to get a better picture :
 Use a deque : why? -> add and remove last element in O(1) and also remove first element in O(1)
   Monotonic Decreasing Queue : Elements can only be greater than prevs number
@@ -21,7 +21,8 @@ nums = [8,7,6,9], k = 2
   window = [7,6,9] : q[0].popleft() : [6,9]
   DQ = [6] {can't add 9 because 6 !> 9} :: pop from dq and add 9
   DQ = [9] : ans.append(dq[0]) : ans array = [8,7,9]
-'''
+"""
+
 from collections import deque
 
 

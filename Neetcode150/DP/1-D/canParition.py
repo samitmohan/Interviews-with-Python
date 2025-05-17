@@ -1,5 +1,6 @@
 # https://www.youtube.com/watch?v=_i4Yxeh5ceQ&t=3s
 
+
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         if sum(nums) % 2:

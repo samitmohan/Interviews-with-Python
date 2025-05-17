@@ -25,6 +25,7 @@ Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3
 Output: true
 Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8]
 """
+
 import heapq
 
 
@@ -42,12 +43,16 @@ class Solution:
         while min_heap:
             min_val = min_heap[0]
             for i in range(min_val, min_val + groupSize):
-                if i not in count:  # min val isn't present in hashmap (value isn't available)
+                if (
+                    i not in count
+                ):  # min val isn't present in hashmap (value isn't available)
                     return False
                 # else decrement count of hashmap
                 count[i] -= 1
                 if count[i] == 0:  # eliminate value from heapq also : EDGE CASE
-                    if i != min_heap[0]:  # {1 : 0, 2 : 1} so can't process 2 also : False
+                    if (
+                        i != min_heap[0]
+                    ):  # {1 : 0, 2 : 1} so can't process 2 also : False
                         return False
                     heapq.heappop(min_heap)
         return True

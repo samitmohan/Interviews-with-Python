@@ -1,6 +1,7 @@
 # segment tree / range sum query problem
 import math
-'''
+
+"""
 Given an integer array nums, handle multiple queries of the following types:
 
     Update the value of an element in nums.
@@ -50,79 +51,100 @@ Update : update original array (O(1)) and update segment tree (same cases) if ou
 
 Segment Trees are useful only when updates are frequent. 
 
-'''
+"""
+
 
 # utility function to get middle index
-def getMid(start, end): 
-    return start + (end-start) // 2
+def getMid(start, end):
+    return start + (end - start) // 2
+
 
 # recursive function to get sum of values in given range of array
-'''
+"""
 st = pointer to segment tree
 si = index of current node in segment tree (0 is passed as it's the root)
 ss and se = start and end index of segment represented by current node
 qs and qe = start and end index of query range
-'''
+"""
+
 
 def getSum_helper(st, ss, se, qs, qe, si):
-    if qs <= ss and qe >= se: return st[si] # segment of node is part of given range
-    if se < qs or ss > qe: return 0 #segment of node is outside given range
+    if qs <= ss and qe >= se:
+        return st[si]  # segment of node is part of given range
+    if se < qs or ss > qe:
+        return 0  # segment of node is outside given range
     # if part of segment overlaps with given range -> split again
     mid = getMid(ss, se)
-    return getSum_helper(st, ss, mid, qs, qe, 2*si+1) + getSum_helper(st, mid+1, se, qs, qe, 2*si+2)
+    return getSum_helper(st, ss, mid, qs, qe, 2 * si + 1) + getSum_helper(
+        st, mid + 1, se, qs, qe, 2 * si + 2
+    )
+
 
 # update
-'''
+"""
 i = index of element to be updated (in input array)
 diff = value to be added to all nodes in seg tree which have i in range 
-'''
+"""
+
 
 def update_helper(st, ss, se, i, diff, si):
-    if i < ss or i > se: return # input index lies outside of range of this segment
+    if i < ss or i > se:
+        return  # input index lies outside of range of this segment
     # in range
-    st[si] = st[si] + diff 
+    st[si] = st[si] + diff
     # if not leaf node, update all internal nodes by splitting
     if se != ss:
         mid = getMid(ss, se)
-        update_helper(st, ss, mid, i, diff, 2*si + 1)
-        update_helper(st, mid+1, se, i, diff, 2*si + 2)
-    
+        update_helper(st, ss, mid, i, diff, 2 * si + 1)
+        update_helper(st, mid + 1, se, i, diff, 2 * si + 2)
+
+
 # now update in array
 def update(arr, st, n, i, new_val):
-    if i < 0 or i > n-1: return
-    diff = new_val - arr[i] # difference between new val and old val
+    if i < 0 or i > n - 1:
+        return
+    diff = new_val - arr[i]  # difference between new val and old val
     arr[i] = new_val
-    update_helper(st, 0, n-1, i, diff, 0) # index to be updated is 0 (ROOT)
+    update_helper(st, 0, n - 1, i, diff, 0)  # index to be updated is 0 (ROOT)
 
 
 def getSum(st, n, qs, qe):
-    if qs < 0 or qe>n-1 or qs>qe: return -1
-    return getSum_helper(st, 0, n-1, qs, qe, 0)
+    if qs < 0 or qe > n - 1 or qs > qe:
+        return -1
+    return getSum_helper(st, 0, n - 1, qs, qe, 0)
 
-def constructSegTree_helper(arr, ss, se, st, si): # si = index of current node in segment tree st
+
+def constructSegTree_helper(
+    arr, ss, se, st, si
+):  # si = index of current node in segment tree st
     # if only 1 element in array : store in current node of seg tree and return
     if ss == se:
         st[si] = arr[ss]
         return arr[ss]
     # if more -> split
     mid = getMid(ss, se)
-    st[si] = constructSegTree_helper(arr, ss, mid, st, si*2+1) + constructSegTree_helper(arr, mid+1, se, st, si*2+2)
+    st[si] = constructSegTree_helper(
+        arr, ss, mid, st, si * 2 + 1
+    ) + constructSegTree_helper(arr, mid + 1, se, st, si * 2 + 2)
     return st[si]
+
 
 def constructSegTree(arr, n):
     # ht
     x = math.ceil(math.log2(n))
     max_size = 2 * pow(2, x) - 1
     st = [0] * max_size
-    constructSegTree_helper(arr, 0, n-1, st, 0)
+    constructSegTree_helper(arr, 0, n - 1, st, 0)
     return st
+
 
 def main():
     arr = [1, 3, 5, 7, 9, 11]
     n = len(arr)
     st = constructSegTree(arr, n)
-    print("Sum of values in given range = ", getSum(st, n, 1, 3)) # 15
-    update(arr, st, n, 1, 10) # 3 updated to 10
-    print("Updated sum of values in range range = ", getSum(st, n, 1, 3)) # 22
+    print("Sum of values in given range = ", getSum(st, n, 1, 3))  # 15
+    update(arr, st, n, 1, 10)  # 3 updated to 10
+    print("Updated sum of values in range range = ", getSum(st, n, 1, 3))  # 22
+
 
 main()

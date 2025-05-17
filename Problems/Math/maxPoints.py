@@ -16,7 +16,8 @@ def find_line(x0, y0, x1, y1):
 
 
 def maxPoints(points):
-    if len(points) == 1: return 1
+    if len(points) == 1:
+        return 1
     # hm
     hashmap = defaultdict(lambda: set())  # unique vals
     for i in range(len(points)):

@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/trapping-rain-water/
 
-'''
+"""
 Documentaion
   Should be boundary on left and right both and the area between them counts
   In order for boundary -> we must take minimum. 1 _ 2 -> _ can't be 2 (left boundary is 1, water will fall. take min(l, r) -> 1 unit)
@@ -10,7 +10,7 @@ Documentaion
   ---
   Find maxLeft, maxRight -> min(maxLeft, maxRight) -> How much water we can trap in that position
   For every single position -> Find how much water can be trapped for that position -> min(maxLeft, maxRight) - height[current_position]
-'''
+"""
 
 
 # Time complexity : O(N)
@@ -21,7 +21,7 @@ def trap(height):
     left = 0
     right = len(height) - 1
     left_max, right_max = height[left], height[right]
-    while (left < right):
+    while left < right:
         if left_max < right_max:
             left += 1
             left_max = max(left_max, height[left])

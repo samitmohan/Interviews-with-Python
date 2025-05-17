@@ -1,5 +1,6 @@
 # O(N)
 
+
 def merge_intervals(intervals):
     # Sort the intervals by their start time
     intervals = sorted(intervals, key=lambda x: x[0])

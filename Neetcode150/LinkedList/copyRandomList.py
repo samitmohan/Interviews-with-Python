@@ -6,11 +6,11 @@ class Node:
         self.val = int(x)
         self.next = next
         self.random = random
-        
+
 Every node ALSO has a random pointer (could be pointing anywhere (null, random node etc..))
 Deep copy (clone the nodes) : new memory (create new LL)
 5 nodes in inp -> 5 nodes in op
-  Difficulty : random pointers 
+  Difficulty : random pointers
   Cloning nodes : [1,2,3]
     3rd node random ptr -> 5th node but we haven't gotten to that node yet : 2 passes/loops
     1st pass : take input node and create deep copy of all nodes (no links)
@@ -22,7 +22,7 @@ Deep copy (clone the nodes) : new memory (create new LL)
 
 
 class Solution:
-    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+    def copyRandomList(self, head: "Optional[Node]") -> "Optional[Node]":
         old_to_copy = {None: None}  # for null edge cases
 
         # first pass : cloning LL nodes and adding to HM
@@ -36,7 +36,9 @@ class Solution:
         while curr:
             copy = old_to_copy[curr]  # gives copy node of current
             # set ptrs (next and random)
-            copy.next = old_to_copy[curr.next]  # except 1 case : current.next = null (handled)
+            copy.next = old_to_copy[
+                curr.next
+            ]  # except 1 case : current.next = null (handled)
             copy.random = old_to_copy[curr.random]
             curr = curr.next
 

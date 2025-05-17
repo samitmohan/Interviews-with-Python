@@ -14,6 +14,7 @@ class Solution:
             if curr.left:
                 queue.append(curr.left)
 
+
 def bfs(graph, start):
     visited = set()
     queue = deque([start])
@@ -30,22 +31,17 @@ def bfs(graph, start):
 
 
 graph = {
-    'A': ['C', 'E'],
-    'B': [],
-    'C': ['B', 'G'],
-    'D': [],
-    'E': ['H'],
-    'H': ['D'],
-    'G': []
+    "A": ["C", "E"],
+    "B": [],
+    "C": ["B", "G"],
+    "D": [],
+    "E": ["H"],
+    "H": ["D"],
+    "G": [],
 }
-bfs(graph, 'A')
+bfs(graph, "A")
 # you should get ['A','C','E','B','G','H','D']
 
-graph2 = {
-    0: [1, 2],
-    1: [2],
-    2: [0, 3],
-    3: [3]
-}
+graph2 = {0: [1, 2], 1: [2], 2: [0, 3], 3: [3]}
 
 bfs(graph2, 2)

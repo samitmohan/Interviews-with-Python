@@ -1,10 +1,13 @@
 # https://leetcode.com/problems/delete-nodes-and-return-forest/
 
+
 class Solution:
     def __init__(self):
         self.ans = []
 
-    def delNodes(self, root: Optional[TreeNode], to_delete: List[int]) -> List[TreeNode]:
+    def delNodes(
+        self, root: Optional[TreeNode], to_delete: List[int]
+    ) -> List[TreeNode]:
         if root.val not in to_delete:
             self.ans.append(root)
         # bfs

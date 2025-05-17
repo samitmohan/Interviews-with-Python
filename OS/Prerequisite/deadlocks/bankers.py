@@ -4,10 +4,14 @@ def main():
     max_resources = [int(i) for i in input("maximum resources : ").split()]
 
     print("\n-- allocated resources for each process --")
-    currently_allocated = [[int(i) for i in input(f"process {j + 1} : ").split()] for j in range(processes)]
+    currently_allocated = [
+        [int(i) for i in input(f"process {j + 1} : ").split()] for j in range(processes)
+    ]
 
     print("\n-- maximum resources for each process --")
-    max_need = [[int(i) for i in input(f"process {j + 1} : ").split()] for j in range(processes)]
+    max_need = [
+        [int(i) for i in input(f"process {j + 1} : ").split()] for j in range(processes)
+    ]
 
     allocated = [0] * resources
     for i in range(processes):
@@ -26,7 +30,7 @@ def main():
         for i in range(processes):
             if running[i]:
                 executing = True
-                for j in range(resources): # need - allocated = available
+                for j in range(resources):  # need - allocated = available
                     if max_need[i][j] - currently_allocated[i][j] > available[j]:
                         executing = False
                         break
@@ -45,5 +49,5 @@ def main():
         print(f"the process is in a safe state.\navailable resources : {available}\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

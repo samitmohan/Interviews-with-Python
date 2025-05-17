@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/maximum-frequency-stack
-'''
+"""
 stack is LIFO
   implement stack, pop operation : pop the most frequent element
     but if there is tie of 2 most frequent element : pop the one which has been added recently (normal pop)
@@ -19,7 +19,8 @@ Pop:
   Also, decrement freq[val] by 1.
   freq: {5:1, 7: 1}; set: {1: [5, 7], 2: []}; max_freq = 1
   return val
-'''
+"""
+
 from collections import defaultdict
 
 
@@ -33,7 +34,9 @@ class FreqStack:
         self.freq[val] += 1  # 5 : 1, key = element, value = frequency
         self.max_freq = max(self.max_freq, self.freq[val])
         # add in groups also
-        self.set[self.freq[val]].append(val)  # 1 : [5] key = freq, value = elements with that freq
+        self.set[self.freq[val]].append(
+            val
+        )  # 1 : [5] key = freq, value = elements with that freq
 
     def pop(self) -> int:
         # remove most freq used from set and pop last element

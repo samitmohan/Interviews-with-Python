@@ -21,8 +21,16 @@ class Solution:
         q = deque([0, 0])
         ans = 0
         vis = {(0, 0)}
-        directions = ((-2, 1), (-1, 2), (1, 2), (2, 1),
-                      (2, -1), (1, -2), (-1, -2), (-2, -1))
+        directions = (
+            (-2, 1),
+            (-1, 2),
+            (1, 2),
+            (2, 1),
+            (2, -1),
+            (1, -2),
+            (-1, -2),
+            (-2, -1),
+        )
         while q:
             for _ in range(len(q)):
                 i, j = q.popleft()  # curr possible

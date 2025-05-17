@@ -2,24 +2,24 @@
 
 # Input: nums = [-1,0,1,2,-1,-4]
 # Output: [[-1,-1,2],[-1,0,1]]
-# Explanation: 
+# Explanation:
 # nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
 # nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
 # nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
 # The distinct triplets are [-1,0,1] and [-1,-1,2].
 
-'''
+"""
 Documentation
   Pick first number (make sure it's not duplicate)
   Apply twosum for other 2 numbers.
   Skip duplicates. (for both 2nd and 3rd number)
 
-We then enter 2 more loops. These loops are used to bypass duplicates. 
-The first one continues while low < high and also while the element at the current pointer position equals the element at the next pointer position. 
+We then enter 2 more loops. These loops are used to bypass duplicates.
+The first one continues while low < high and also while the element at the current pointer position equals the element at the next pointer position.
 We move the left pointer forwards until a unique element is found.
 
 Notes : Look how to skip duplicates || work on it on paper.
-'''
+"""
 
 
 class Solution:

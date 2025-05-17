@@ -40,7 +40,7 @@ print(a is b)  # false
 numbers = [1, 2, 3, 4, 5]
 # create square
 sq_nums = []
-square = lambda n: n ** 2
+square = lambda n: n**2
 
 for num in numbers:
     sq_nums.append(square(num))
@@ -48,7 +48,7 @@ for num in numbers:
 # instead of this : use map() : applies function to iterable that is passed
 # 2 arguments : function that will modify and iterable
 # need to convert to list
-sq_nums2 = list(map(lambda n: n ** 2, numbers))
+sq_nums2 = list(map(lambda n: n**2, numbers))
 
 # Similarly the filter()
 numbers = [234, 1, 23, 3213, 55, 23, 24]
@@ -58,6 +58,7 @@ print(list(filter(lambda x: x % 2, range(15))))
 
 # *args and **kwargs
 # *args : accept variable number of arguments
+
 
 def add(*args):
     total = 0
@@ -73,6 +74,7 @@ print(add(1, 2, 23, 5))  # works no matter how many arguments passed
 
 # kwargs : for dictionaries
 
+
 def printer(**kwargs):
     for x, y in kwargs.items():
         print(f"{x} - {y}")
@@ -86,7 +88,7 @@ printer(name="samit", company="MMT")
 input_list = list(map(int, input("enter numbers: ").split()))
 
 # Get permutated strings
-list(itertools.permutations('Happy', 2))  # ('H', 'A'), ('H', 'P'), ...
+list(itertools.permutations("Happy", 2))  # ('H', 'A'), ('H', 'P'), ...
 
 # Most common
 arr = [1, 3, 4, 2, 1, 4, 1, 4, 2, 5, 2, 1, 4, 2, 1]
@@ -202,16 +204,18 @@ $ end of the string
 # close()
 
 # get connection
-conn = mysql.connector.connect(host='localhost', database='mydb', user='root', password='tiger')
+conn = mysql.connector.connect(
+    host="localhost", database="mydb", user="root", password="tiger"
+)
 # get cursor object
 cursor = conn.cursor()
 
 if conn.is_connected():
     print("connection made")
 
-'''
+"""
 emp has 3 columns : id, name, salary
-'''
+"""
 
 cursor.execute("select * from emp")
 row = cursor.fetchone()
@@ -224,6 +228,7 @@ conn.close()
 
 # Creating rows and deleting:
 # execute(” insert into or delete from query”)
+
 
 # Threading
 class Producer:

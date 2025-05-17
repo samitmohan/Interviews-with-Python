@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/baseball-game/description/
 
+
 def baseball(operations):
     stack = []
     for op in operations:

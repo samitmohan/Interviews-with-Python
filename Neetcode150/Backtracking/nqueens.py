@@ -5,7 +5,7 @@ n = 4
 def display(board):
     for i in range(n):
         for j in range(n):
-            print(board[i][j], end=' ')
+            print(board[i][j], end=" ")
         print()
 
 
@@ -47,11 +47,7 @@ def nqueen(board, row):
 
 
 def main():
-    board = [[0, 0, 0, 0],
-             [0, 0, 0, 0],
-             [0, 0, 0, 0],
-             [0, 0, 0, 0]
-             ]
+    board = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
     if nqueen(board, 0) == False:
         print("no soln")
         return False

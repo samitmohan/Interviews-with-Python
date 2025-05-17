@@ -3,8 +3,10 @@
 class Solution:
     def mergeKLists(self, lists):
         # edge cases
-        if not lists: return None
-        if len(lists) == 1: return lists[0]
+        if not lists:
+            return None
+        if len(lists) == 1:
+            return lists[0]
 
         mid = len(lists) // 2
         left = self.mergeKLists(lists[:mid])
@@ -13,7 +15,8 @@ class Solution:
 
     def merge(self, left, right):
         # edge cases
-        if not left or not right: return left or right
+        if not left or not right:
+            return left or right
 
         if left.val < right.val:
             # left comes first [left -> right] recursively

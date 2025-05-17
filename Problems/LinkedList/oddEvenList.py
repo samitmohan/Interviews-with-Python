@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/odd-even-linked-list
 # Good explanation : https://leetcode.com/problems/odd-even-linked-list/solutions/1606963/c-simplest-solution-w-explanation-one-pass/?orderBy=most_votes
 
+
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # check for null value
@@ -10,7 +11,9 @@ class Solution:
         odd = head
         even = head.next
         even_start = even  # store for eonnecting in the future
-        while even and even.next:  # what if only 1 val (odd) -> need multiple values hence check if even != nullptr
+        while (
+            even and even.next
+        ):  # what if only 1 val (odd) -> need multiple values hence check if even != nullptr
             # link
             odd.next = odd.next.next
             even.next = even.next.next

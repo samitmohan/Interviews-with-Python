@@ -12,6 +12,7 @@ def prefix_sum(arr):
 # O(1) : rolling
 # "what is the sum of elements in a range [i, j]?"
 
+
 def prefix_sum_optimized(arr):
     prefix = [0] * len(arr)
     prefix[0] = arr[0]

@@ -1,8 +1,8 @@
 # https://leetcode.com/problems/single-element-in-a-sorted-array/
-'''
+"""
 Keep a hashmap of number and freq
   Number with freq 1 = answer
-'''
+"""
 
 
 def singleNonDuplicate(nums):

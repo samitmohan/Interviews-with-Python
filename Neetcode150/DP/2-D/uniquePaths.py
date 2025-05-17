@@ -1,8 +1,8 @@
 # https://leetcode.com/problems/unique-paths/
-'''
+"""
 simple dfs
  either go right or down
-'''
+"""
 
 
 class Solution:

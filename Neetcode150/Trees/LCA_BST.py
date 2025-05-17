@@ -11,15 +11,17 @@ Time : Height : O(log(n))
 #         self.left = None
 #         self.right = None
 
+
 class Solution:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
         # dont need dfs its BST
         while root:
-            if p.val < root.val and q.val < root.val: 
+            if p.val < root.val and q.val < root.val:
                 root = root.left
-            elif p.val > root.val and q.val > root.val: 
+            elif p.val > root.val and q.val > root.val:
                 root = root.right
             # split point
             else:
-                return root 
-            
+                return root

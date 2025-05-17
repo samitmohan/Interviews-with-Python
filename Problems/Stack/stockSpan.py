@@ -15,6 +15,7 @@ class StockSpanner:
         self.stack.append((price, span))  # update
         return span
 
+
 # price : [100,80,60,70,60,75,85]
 # span : [1,1,1,2,1,4,6]
 #   for 100 : default : 1

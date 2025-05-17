@@ -1,30 +1,35 @@
 def isMatch(s, p):
     dp = {}
-    def dfs(i, j): # current posn of s and p
-        # match : no problems till now : base case
-        if i == len(s) and j == len(p): return True # reached full pattern
-        # ran out of patterns
-        if j == len(p): # run out of pattern characters
-            return False # not match
 
-        if (i, j) in dp: return dp[(i, j)] # memoized..
+    def dfs(i, j):  # current posn of s and p
+        # match : no problems till now : base case
+        if i == len(s) and j == len(p):
+            return True  # reached full pattern
+        # ran out of patterns
+        if j == len(p):  # run out of pattern characters
+            return False  # not match
+
+        if (i, j) in dp:
+            return dp[(i, j)]  # memoized..
 
         # if curr char posn at i and j match.
-        match = i < len(s) and (s[i] == p[j] or p[j] == '?')
+        match = i < len(s) and (s[i] == p[j] or p[j] == "?")
 
         # mutli character
-        if p[j] == '*':
+        if p[j] == "*":
             # match empty character or match one/more character from s
-            dp[(i, j)] = dfs(i, j + 1) or (i < len(s) and dfs(i+1, j))
-            return dp[(i, j)]
-        
-        if match: # do for next character also
-            dp[(i, j)] = dfs(i+1, j+1) 
+            dp[(i, j)] = dfs(i, j + 1) or (i < len(s) and dfs(i + 1, j))
             return dp[(i, j)]
 
-        dp[(i, j)] = False # if no above conditions met : not match
+        if match:  # do for next character also
+            dp[(i, j)] = dfs(i + 1, j + 1)
+            return dp[(i, j)]
+
+        dp[(i, j)] = False  # if no above conditions met : not match
         return False
+
     return dfs(0, 0)
+
 
 # worst case : exponential time complexity
 # O(len(s) * len(p)) : space complexity

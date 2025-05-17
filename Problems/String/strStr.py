@@ -5,7 +5,7 @@ class Solution:
             return 0
         # go till o (leetcode) no need to check de)
         for i in range(len(haystack) + 1 - len(needle)):
-            if haystack[i: i + len(needle)] == needle:
+            if haystack[i : i + len(needle)] == needle:
                 return i
         return -1
 

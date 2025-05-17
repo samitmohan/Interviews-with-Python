@@ -40,7 +40,9 @@ class Solution:
             # 1 - 9
             ans = dfs(i + 1)
             # check for second character and limit of 26
-            if (i + 1 < len(s) and (s[i] == "1" or s[i] == "2" and s[i + 1] in "0123456")):
+            if i + 1 < len(s) and (
+                s[i] == "1" or s[i] == "2" and s[i + 1] in "0123456"
+            ):
                 ans += dfs(i + 2)
             dp[i] = ans  # store cache
             return ans

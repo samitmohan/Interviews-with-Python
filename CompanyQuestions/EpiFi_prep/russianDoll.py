@@ -2,6 +2,7 @@
 # We can simple reverse sort the height if two width are equal, to remove duplicacy.
 # the next coming height would be less than the previous one
 
+
 class Solution:
     def maxEnvelopes(self, envelopes):
         # sort envelopes in ascending order of width and descending order of height

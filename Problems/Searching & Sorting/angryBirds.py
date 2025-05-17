@@ -7,10 +7,10 @@ def canPlaceBirds(b, n, nests, sep):
     last_location = nests[0]
     for i in range(1, n - 1):
         currLoc = nests[i]
-        if (currLoc - last_location >= sep):
+        if currLoc - last_location >= sep:
             birds += 1
             last_location = currLoc
-            if (birds == b):
+            if birds == b:
                 return True
     return False
 

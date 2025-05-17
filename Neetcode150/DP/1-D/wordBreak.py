@@ -43,7 +43,7 @@ class Solution:
         for i in range(len(s) - 1, -1, -1):
             for w in wordDict:
                 # there are enough characters in s to compare to
-                if (i + len(w)) <= len(s) and s[i: i + len(w)] == w:
+                if (i + len(w)) <= len(s) and s[i : i + len(w)] == w:
                     dp[i] = dp[i + len(w)]
                 if dp[i]:
                     break  # even if 1 word matches = True

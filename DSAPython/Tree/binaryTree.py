@@ -38,9 +38,11 @@ class BinaryTree:
         else:
             print("Value already in tree.")
 
+
 # Inorder : L N R
 # Preorder : N L R
 # Postorder : L R N
+
 
 def inorder_traversal(node):
     if node:

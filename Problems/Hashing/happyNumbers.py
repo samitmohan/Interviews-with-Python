@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/happy-number
 # easy set solution, keep adding to set until 1 reached and return n == 1
 
+
 def happyNumber(n):
     seen = set()
     while n not in seen:

@@ -69,8 +69,10 @@ class Solution:
         self.done.add(sorted_num)
         freq = Counter(sorted_num)
         total_perm = self.count_all_permutations(freq, n)
-        
-        if (freq["0"] > 0):  # different calc for permutations : set 0 at beginning and count for n-1
+
+        if (
+            freq["0"] > 0
+        ):  # different calc for permutations : set 0 at beginning and count for n-1
             freq["0"] -= 1
             invalid_permutations = self.count_all_permutations(freq, n - 1)
             freq["0"] += 1  # set back to normal

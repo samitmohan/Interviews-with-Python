@@ -1,5 +1,5 @@
 """
-Aditya is playing a game on the computer where in each round he is given 2 strings out of which one string contains '*' and '?' in it. 
+Aditya is playing a game on the computer where in each round he is given 2 strings out of which one string contains '*' and '?' in it.
 The task of aditya is to find out whether string contains '*' and '?' matches with the other string completely or not, there are some rules as follows to match the strings -:
   1) '?' matches any single character
   2) '*' Matches any sequence of characters (including empty sequence)
@@ -41,6 +41,7 @@ case 1 : empty string, any pattern will match : dp[0][0] = True
 """
 # Time : O(m * n)
 # Space : O(m * n)
+
 
 def isMatch(s, p):
     m, n = len(s), len(p)
