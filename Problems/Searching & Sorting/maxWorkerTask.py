@@ -23,7 +23,9 @@ class Solution:
 
 # original solution
 class Solution:
-    def maxTaskAssign( self, tasks: List[int], workers: List[int], pills: int, strength: int) -> int:
+    def maxTaskAssign(
+        self, tasks: List[int], workers: List[int], pills: int, strength: int
+    ) -> int:
         tasks_sorted = sorted(tasks, reverse=True)
         workers_sorted = sorted(workers, reverse=True)
         tStack = tasks_sorted[:]
@@ -78,7 +80,9 @@ Also we’re assigning tasks greedily, matching:
 
 
 class Solution:
-    def maxTaskAssign( self, tasks: List[int], workers: List[int], pills: int, strength: int) -> int:
+    def maxTaskAssign(
+        self, tasks: List[int], workers: List[int], pills: int, strength: int
+    ) -> int:
         tasks.sort()
         workers.sort()
 
@@ -132,18 +136,21 @@ Cant use dp -> O(m*n) is still huge {looking at the constraints}
 
 from sortedcontainers import SortedList
 
+
 class Solution:
     def maxTaskAssign(self, tasks, workers, pills, strength):
         tasks.sort()  # Easiest to hardest
         workers.sort(reverse=True)  # Strongest to weakest
 
         def can_assign(num_tasks):
-            current_tasks = tasks[:num_tasks]           # Easiest tasks
-            current_workers = workers[:num_tasks]       # Strongest workers
+            current_tasks = tasks[:num_tasks]  # Easiest tasks
+            current_workers = workers[:num_tasks]  # Strongest workers
             available_workers = SortedList(current_workers)
             pills_left = pills
 
-            for task in reversed(current_tasks):  # From hardest of the `num_tasks` tasks
+            for task in reversed(
+                current_tasks
+            ):  # From hardest of the `num_tasks` tasks
                 # If we can assign without a pill
                 if available_workers and available_workers[-1] >= task:
                     available_workers.pop()
@@ -169,4 +176,3 @@ class Solution:
             else:
                 right = mid - 1
         return answer
-``

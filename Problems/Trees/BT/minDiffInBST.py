@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def minDiffInBST(self, root: Optional[TreeNode]) -> int:
+    def minDiffInBST(self, root):
         # Solution : Sort elements (in-order traversal in BST) : [1, 2, 3, 4, 6]
         # Compute difference of adjacent nodes and find min. [1-2 : 1, 2-3 : 1, 3-4 : 1, 4-6 : 2] : min([1,1,1,2]) = 1
         # Keep track of prev node, initially : NULL, once we go to 2, prev = 1 and just find min(node.val - prev.val)

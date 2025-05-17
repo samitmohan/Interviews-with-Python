@@ -31,7 +31,7 @@ print(author)
 print(author := "Yang")
 # Yang
 # Another example
-while(line := input()) != "stop":
+while (line := input()) != "stop":
     print(line)
 # Assigns value to variables WITHIN an expression, rather than assigning them seperately
 
@@ -46,12 +46,14 @@ def fib(x):
         return fib(x - 1) + fib(x - 2)
 """
 
-fib(x):
-return x if x <= 1 else fib(x - 1) + fib(x - 2)
+
+def fib(x):
+    return x if x <= 1 else fib(x - 1) + fib(x - 2)
+
 
 # List comprehensions
-Genius["samit", "rishabh", "amisha"]
-l1 = [name if name.startswith('y') else 'Not genius' for name in Genius]
+Genius = ["samit", "rishabh", "amisha"]
+l1 = [name if name.startswith("y") else "Not genius" for name in Genius]
 print(l1)  # Not genius
 
 # Higher order functions
@@ -60,23 +62,23 @@ For example, the map() function is a famous and frequently-used higher-order fun
 
 As the above example shows, with the help of the map() function, we can avoid writing a for loop to capitalize every word in the names list.
 """
-names = ['yAnG', 'MASk', 'thoMas', 'LISA']
+names = ["yAnG", "MASk", "thoMas", "LISA"]
 names = map(str.capitalize, names)
 print(list(names))
 # ['Yang', 'Mask', 'Thomas', 'Lisa']
 
 # Merge dictionaries
 
-cities_us = {'New York City': 'US', 'Los Angeles': 'US'}
-cities_uk = {'London': 'UK', 'Birmingham': 'UK'}
+cities_us = {"New York City": "US", "Los Angeles": "US"}
+cities_uk = {"London": "UK", "Birmingham": "UK"}
 
-cities_us |= cities_uk # | is used to merge dictionaries (Union Operator)
+cities_us |= cities_uk  # | is used to merge dictionaries (Union Operator)
 print(cities_us)
 # {'New York City': 'US', 'Los Angeles': 'US', 'London': 'UK', 'Birmingham': 'UK'}
 
 # F-Strings
 pi = 3.1415
-print(f'Pi is approximately = {pi:.2f}')
+print(f"Pi is approximately = {pi:.2f}")
 
 # Using Asterisks for Unpacking Iterables and Destructuring Assignments
 # How to merge a list, a tuple and a set into one list?

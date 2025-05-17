@@ -4,7 +4,7 @@
 # binary search Tree height difference b/w left and right node cannot be more than 1 or in other words they contain
 # almost equal number of nodes.
 class Solution:
-    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+    def sortedArrayToBST(self, nums):
         if not nums:
             return None
         mid = len(nums) // 2

@@ -22,7 +22,7 @@ import collections
 
 
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrder(self, root):
         ans = 0
         q = collections.deque([root] if root else [])
         while q:
@@ -38,9 +38,7 @@ class Solution:
             ans.append(level)
         return ans
 
-
-class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrder2(self, root):
         ans = []
         if not root:
             return ans

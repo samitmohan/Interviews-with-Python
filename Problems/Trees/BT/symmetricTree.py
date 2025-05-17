@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/symmetric-tree/
 # Preorder for left tree, reverse preorder for right tree, compare.
 class Solution:
-    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+    def isSymmetric(self, root):
         def preorder(st1, st2):
             # edge case
             if st1 is None and st2 is None:

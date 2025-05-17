@@ -1,4 +1,4 @@
-ef selection_sort(input_list):
+def selection_sort(input_list):
     for idx in range(len(input_list)):
         min_idx = idx
         for j in range(idx + 1, len(input_list)):
@@ -10,6 +10,7 @@ ef selection_sort(input_list):
 
 
 # add any list of number here
-l = [5, 2, 4, 6, 1, 3]
-selection_sort(l)
-print(l)
+if __name__ == "__main__":
+    l = [5, 2, 4, 6, 1, 3]
+    selection_sort(l)
+    print(l)

@@ -3,7 +3,7 @@
 
 
 class Solution:
-    def longestZigZag(self, root: Optional[TreeNode]) -> int:
+    def longestZigZag(self, root):
         return max(
             self.trversal(root.left, 0, False), self.trversal(root.right, 0, True)
         )

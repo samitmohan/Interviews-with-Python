@@ -1,10 +1,10 @@
-https: // leetcode.com / problems / possible - bipartition /
+# https: // leetcode.com / problems / possible - bipartition /
 
 
 class Solution:
-    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
+    def possibleBipartition(self, n: int, dislikes):
         # constatn defined for color drawing to person
-        not_colored, blue, green = 0, - 1, -1
+        not_colored, blue, green = 0, -1, -1
 
         def helper(person_id, color):
             # draw person_id as color
@@ -15,7 +15,9 @@ class Solution:
                     # the_other has same color of current person id
                     # reject due to breaking of rules
                     return False
-                if colorTable[the_other] == not_colored and (not helper(the_other, -color)):
+                if colorTable[the_other] == not_colored and (
+                    not helper(the_other, -color)
+                ):
                     # other people can not be colored with 2 diff colors
                     return False
             return True

@@ -14,7 +14,7 @@ nums = [1,5] -> [5] -> []
 coins = 1*1*5 + 1*5*1 = 10
 
 Example 2 -:
-Input: 
+Input:
 nums = [3,1,5,8]
 Output: 167
 
@@ -28,7 +28,7 @@ Sample Input (Example 1):
 1
 5
 
-Sample Output (Example 1): 
+Sample Output (Example 1):
 10
 """
 
@@ -37,23 +37,35 @@ Sample Output (Example 1):
 # Time : O(n^3)
 # Space : O(n^2)
 
+from functools import cache
+
+
 def maxCoins(nums):
-    nums = [1] + nums + [1] # when we consider adjacent elements, we don't run into boundary issues
+    nums = (
+        [1] + nums + [1]
+    )  # when we consider adjacent elements, we don't run into boundary issues
     dp = {}
+
     @cache
-    def dfs(left, right): # current sub array being considered : left and right
-        if left > right: return 0 # nothing to pop (no coins to collect since no elements left in subarray)
-        if (left, right) in dp: return dp[(left, right)] # memo
+    def dfs(left, right):  # current sub array being considered : left and right
+        if left > right:
+            # nothing to pop (no coins to collect since no elements left in subarray)
+            return 0
+        if (left, right) in dp:
+            # memo
+            return dp[(left, right)]
         # computation
         dp[(left, right)] = 0
         # max points we can get for this pair
         for i in range(left, right + 1):
             coins = nums[left - 1] * nums[i] * nums[right + 1]
             # call for both left and right sub array
-            coins += dfs(left, i - 1) + dfs(i + 1,m right)
+            coins += dfs(left, i - 1) + dfs(i + 1, right)
             dp[(left, right)] = max(dp[(left, right)], coins)
         return dp[(left, right)]
-    return dfs(1, len(nums) - 2) # ignore the last 1 added
+
+    return dfs(1, len(nums) - 2)  # ignore the last 1 added
+
 
 # Tabluation
 def maxCoins(nums):
@@ -70,13 +82,17 @@ def maxCoins(nums):
         for right in range(1, n + 1):
             if left > right:
                 continue
-            maxi = float('-inf')
-            
+            maxi = float("-inf")
+
             # Iterate through the balloons from 'i' to 'j'
             for ind in range(left, right + 1):
-                cost = nums[left - 1] * nums[ind] * nums[right + 1] + dp[left][ind - 1] + dp[ind + 1][right]
+                cost = (
+                    nums[left - 1] * nums[ind] * nums[right + 1]
+                    + dp[left][ind - 1]
+                    + dp[ind + 1][right]
+                )
                 maxi = max(maxi, cost)
-            
+
             dp[left][right] = maxi
-    
+
     return dp[1][n]

@@ -1,4 +1,5 @@
-def topKFrequent(self, nums: List[int], k: int) -> List[int];
+def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    pass
 
 
 # hashmap

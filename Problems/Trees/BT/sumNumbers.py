@@ -3,7 +3,7 @@
 
 
 class Solution:
-    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+    def sumNumbers(self, root):
         def sumRecursive(root, currSum):
             if not root:
                 return 0
