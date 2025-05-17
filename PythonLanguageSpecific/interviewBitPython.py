@@ -128,7 +128,7 @@ class Employee:
         self._age = age
         self.__branch = branch
 
-    def display():
+    def display(self):
         print(self._emp_name + " " + self._age + " " + self.__branch)
 
 

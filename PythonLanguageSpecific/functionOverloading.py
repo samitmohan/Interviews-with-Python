@@ -1,8 +1,8 @@
 # https://samit.bearblog.dev/how-is-python-written/
 # function overloading in python (not supported by default)
 
-from inspect import getfullargspec
 from functools import wraps
+from inspect import getfullargspec
 
 
 class OverloadRegistry:
