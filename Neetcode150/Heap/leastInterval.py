@@ -18,6 +18,7 @@ Queue to add task and time
 """
 
 import heapq
+from collections import Counter
 
 # Time : O(n(log(n))) Space : O(n) (Counter takes nlogn)
 # Round Robin technique (queue needed for tasks which are waiting for cool down period)
@@ -31,7 +32,7 @@ from collections import deque
 
 
 class Solution:
-    def leastInterval(self, tasks: List[str], n: int) -> int:
+    def leastInterval(self, tasks, n):
         if n == 0:
             return len(tasks)  # no waiting time
         hashmap = Counter(tasks)
