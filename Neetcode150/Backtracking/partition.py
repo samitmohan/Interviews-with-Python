@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/palindrome-partitioning/
 class Solution:
-    def partition(self, s: str) -> List[List[str]]:
+    def partition(self, s: str):
         ans = []
 
         def helper(s, path, ans):
