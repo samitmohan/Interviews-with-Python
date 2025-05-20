@@ -23,7 +23,21 @@ def quickSort(arr, low, high):
         quickSort(arr, pi + 1, high)
 
 
+# Better QuickSort
+
+
+def quickSort_better(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quickSort_better(left) + middle + quickSort_better(right)
+
+
 arr = [6, 5, 4, 1, 8, 7, 3, 4]
 n = len(arr)
 quickSort(arr, 0, n - 1)
-print(arr)
+print(quickSort_better(arr))
+# print(arr)
