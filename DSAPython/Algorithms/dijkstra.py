@@ -16,16 +16,14 @@ def dijkstra(graph, start):
         distance, currNode = heappop(heap)
         if currNode in vis:
             continue
-        vis.add(
-            currNode
-        )  # Pick the node with the smallest tentative distance, mark it.
+        # Pick the node with the smallest tentative distance, mark it.
+        vis.add(currNode)
         # neighbour check
         for neighbor, wt in graph[currNode].items():
             if neighbor in vis:
                 continue
-            newDist = (
-                distance + wt
-            )  # distance from the start node to that neighbor via currNode.
+            # distance from the start node to that neighbor via currNode.
+            newDist = distance + wt
             if newDist < dist[neighbor]:
                 dist[neighbor] = newDist
                 heappush(heap, (newDist, neighbor))  # 1,B or 4, C
