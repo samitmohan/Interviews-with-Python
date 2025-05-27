@@ -1,1 +1,0 @@
-# cool things ive learned from Python Tricks Book

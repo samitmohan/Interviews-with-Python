@@ -1,5 +1,10 @@
 import datetime
 
+# Access Specifiers
+# _ = protected
+# __ = private
+# no prefix = public
+
 
 class Employee:
     # class variable
