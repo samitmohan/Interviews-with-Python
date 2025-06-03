@@ -405,7 +405,7 @@ bisect.insort_right(arr, 4)  # arr becomes [1, 3, 4, 5, 6, 7, 9]
 
 ### Use Type Annotations
 
-Always use type annotations, always use comments under functions. Know what is expected to be the input and output of your function.
+Always use type annotations, always use docstrings under functions. Know what is expected to be the input and output of your function.
 
 ```python
 from typing import List, Dict
@@ -433,7 +433,7 @@ def calculate_total_price( items: List[Dict[str, float]], discount_rate: float) 
     return total * (1 - discount_rate)
 ```
 
-### Anonymous Functions: Keep It Simple
+### Keep It Simple
 
 Please don't write code like this:
 ```python
@@ -523,9 +523,13 @@ any_greater_than_5 = any(n > 5 for n in numbers)  # True
 
 ```python
 def is_palindrome(text: str) -> bool:
-    return cleaned == cleaned[::-1]
+    return text == text[::-1]
 
 print(is_palindrome("racecar"))  # True
+
+numbers[::2]    # Every second element
+numbers[::-1]   # Reverse
+numbers[1::2]   # Skip first, then every second
 ```
 
 ### Package Management
